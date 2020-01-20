@@ -1,0 +1,34 @@
+<br><br><br>
+<div class="row">
+    <div class="col-sm-3">
+    <div style="width: 83%;margin: auto;border: 1px #ccc2c2 solid;padding-bottom: 13px;" >
+        <div class="list-group" class="container"  *ngFor="let category of categories" style=" margin-top: 10px;">
+            <a  class="list-group-item list-group-item-action list-group-item-info" style="height: 52px;
+            background-color:
+            darkkhaki;">
+                <span>{{category.id +" -- "}}{{" "+category.time}}</span>
+            </a>
+        </div> 
+    </div>
+
+    </div>
+    
+    <div class="col-sm-9" style="border-left: 1px solid #b9b0b0;  display: flex;">
+        <div class="row" style="">
+        <div class="list-group" class="container" class="col-sm-4"  *ngFor="let product of products" style=" margin-top: 10px;min-height: 360px;height: 155px;padding-bottom: 25px;">
+  
+            <a  class="list-group-item list-group-item-action list-group-item-info" style="margin-top: 10px;
+            width: 86%;min-width: 233px;height: 98%;">
+            <div style="height: 192px;"><img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%"></div>
+                      <div class="card-body">
+                        <span class="card-title">John Doe</span>
+                        <p class="card-text"> <span>{{product.id +" -- "}}{{" "+product.time}}</span></p>
+                        <a href="#" class="btn btn-primary" style="width: 100%;">See Profile</a>
+                      </div>
+                    <br>
+            </a>
+        </div>
+    
+    </div>
+   
+</div>
