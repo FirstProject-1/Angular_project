@@ -8,6 +8,8 @@ import { WishListPageComponent } from './wish-list-page/wish-list-page.component
 import { BodyComponent } from './body/body.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NoPageFoundComponent } from './no-page-found/no-page-found.component';
+import { ProductService } from 'servises/product.service';
+import{HttpClientModule, HttpClient} from '@angular/common/http'; 
 
 @NgModule({
   declarations: [
@@ -20,9 +22,11 @@ import { NoPageFoundComponent } from './no-page-found/no-page-found.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
+    
   ],
-  providers: [],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

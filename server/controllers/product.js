@@ -36,8 +36,10 @@ router.get('/productDetails/:_id',function(req,resp){
     var _id=req.params._id
     mongoose.model('products').findOne({_id:_id},function(err,data){
         resp.json(data)
+        
     })
 })
+
 
 // delete proudct
 router.get('/deleteProduct/:_id',function(req,resp){
