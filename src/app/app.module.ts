@@ -11,8 +11,13 @@ import { AdminAreaComponent } from './admin-area/admin-area.component';
 import { AddProductComponent } from './admin-area/add-product/add-product.component';
 import { AddCategoryComponent } from './admin-area/add-category/add-category.component';
 import{HttpClientModule} from '@angular/common/http';
-import { CategoryService } from './services/category.service';
+import { CategoryService } from './services/category/category.service';
 
+import { CartPageComponent } from './cart-page/cart-page.component';
+import { WishListPageComponent } from './wish-list-page/wish-list-page.component';
+import { BodyComponent } from './body/body.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { NoPageFoundComponent } from './no-page-found/no-page-found.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +27,11 @@ import { CategoryService } from './services/category.service';
     AdminAreaComponent,
     AddProductComponent,
     AddCategoryComponent,
-    
+    CartPageComponent,
+    WishListPageComponent,
+    BodyComponent,
+    HomePageComponent,
+    NoPageFoundComponent
   ],
   imports: [
     BrowserModule,

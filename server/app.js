@@ -1,8 +1,9 @@
 var express =require("express")
 var mongoose=require("mongoose");
 var fs=require('fs')
-var categoryController= require('./controllers/category')
+// const cors=require('cors');
 
+var categoryController= require('./controllers/category')
 
 //create my server
 var app = express()
@@ -17,11 +18,22 @@ app.all('*',function (req, resp, next) {
 app.use(express.static("public"))
 
 app.use('/adminAera',categoryController)
+// app.use(cors());
 
 //connect to DB
 mongoose.connect("mongodb://127.0.0.1:27017/market_an");
 
 // require for model files
+var express = require("express")
+var ProductController = require("./controllers/product")
+
+
+app.use('/product',ProductController)
+var router = express.Router();
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
+var middlewareBodyParser = bodyParser.json();
+
 var files_arr=fs.readdirSync(__dirname+"/models")
 files_arr.forEach(function(file){
   require(__dirname+"/models/"+file);

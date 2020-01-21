@@ -5,7 +5,7 @@
             <div class="input-field col">
               <i class="material-icons prefix ">mode_edit</i>
               <input type="text" id="name" class="validate"/>
-              <label for="name ">Product Name</label>
+              <label for="name">Product Name</label>
             </div>
           </div>    
         <!-- des -->
@@ -41,10 +41,7 @@
             <div class="form-group ">
                 <select class="form-control mb-3 purple lighten-3 grey-dark-text" id="cat">
                 <option value="" disabled >Choose Category</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
+                <option *ngFor="let cat of categories">{{cat.name}}</option>
                 </select>
             </div>
           </div>
