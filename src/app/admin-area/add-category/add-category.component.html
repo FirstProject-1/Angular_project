@@ -3,46 +3,20 @@
   <div class="row">
     <div class="input-field col">
       <i class="material-icons prefix ">mode_edit</i>
-      <input type="text" id="catName" name="catName" class="validate" required [class.is-invalid]="name.invalid &&name.touched" #name="ngModel" [(ngModel)]="catModel.name"/>
+      <input type="text" id="catName" name="catName" class="validate" required [class.is-invalid]="name.invalid &&name.touched" #name="ngModel" [(ngModel)]="catModel.catName"/>
       <label for="name ">Category Name</label>
     </div>
-  </div> 
+  </div>
   <div class="row">
     <div class="input-field col s6">
       <i class="material-icons prefix ">description</i>
-      <input type="text" id="catDes" class="validate" name="catDescription" [class.is-invalid]="description.invalid && description.touched" #description="ngModel" [(ngModel)]="catModel.description">
+      <input type="text" id="catDes" class="validate" name="catDescription" [class.is-invalid]="name.invalid && name.touched" #description="ngModel" [(ngModel)]="catModel.catDescription">
       <label for="des">description</label>
     </div>
   </div>
-  <input type="submit" value="save">
+  <button class="waves-effect waves-dark btn amber darken-4 mb-4 " type="submit" [disabled]="catForm.form.invalid">Submit
+    <i class="material-icons right">send</i>
+  </button>
 </form>
 </div>
 
-
-<!-- <div class="row amber lighten-3">
-    <form class="col mt-4" action="/adminAera/addCategory/added" method="POST" #catForm="ngForm" [ngModelOptions]="{standalone:true}" novalidate (ngSubmit)="onSubmit()">
-      
-        <div class="row">
-            <div class="input-field col">
-              <i class="material-icons prefix ">mode_edit</i>
-              <input type="text" id="name" name="name" class="validate" required [class.is-invalid]="name.invalid &&name.touched" #name="ngModel" [(ngModel)]="catModel.name"/>
-              <label for="name ">Category Name</label>
-            </div>
-          </div>    
-        
-      <div class="row">
-        <div class="input-field col s6">
-          <i class="material-icons prefix ">description</i>
-          <textarea id="des" class="materialize-textarea" name="description" [class.is-invalid]="description.invalid && description.touched" #description="ngModel" [(ngModel)]="catModel.description"></textarea>
-          <label for="des">description</label>
-        </div>
-      </div>
-
-
-      <button class="waves-effect waves-dark btn amber darken-4 mb-4 " type="submit" name="action" [disabled]="catForm.form.invalid">Submit
-        <i class="material-icons right">send</i>
-      </button>
-    </form>
-    
-     
-  </div> -->

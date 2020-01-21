@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { catForm } from '../../classes/catForm';
+import { categForm } from '../../classes/catForm';
 import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
@@ -12,12 +12,12 @@ export class CategoryService {
 
   constructor(private http: HttpClient) { }
   
-  addCategory(cat:catForm) {
-    console.log("pppp")
-    return this.http.post<any>('http://localhost:8080/adminAera/addCategory/added',cat);
+  addCategory(cat:categForm) {
+   // console.log(cat)
+    return this.http.post('http://localhost:8080/Category/add',cat);
   }
   
   listCategory():Observable<categories[]>{
-    return this.http.get<categories[]>("http://localhost:8080/adminAera/addCategory/list")
+    return this.http.get<categories[]>("http://localhost:8080/Category/list")
   }
 }

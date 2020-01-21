@@ -8,7 +8,6 @@ import { CategoryService } from '../services/category/category.service';
 })
 export class HomePageComponent implements OnInit {
   public categories=[]
-  products=["","","","","","","","",""]
   
   constructor(private catService:CategoryService) { }
 

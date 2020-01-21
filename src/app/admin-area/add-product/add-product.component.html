@@ -12,7 +12,7 @@
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix ">description</i>
-          <textarea id="des" class="materialize-textarea"></textarea>
+          <textarea id="des" class="materialize-textarea" name="description"></textarea>
           <label for="des">description</label>
         </div>
       </div>
@@ -20,7 +20,7 @@
       <div class="row">
         <div class="input-field col">
           <i class="material-icons prefix ">attach_money</i>
-          <input type="text" id="price" class="validate"/>
+          <input type="text" id="price" class="validate" name="price"/>
           <label for="price">Price</label>
         </div>
       </div>
@@ -28,7 +28,7 @@
       <div class="row">
         <div class="input-field col">
           <i class="material-icons prefix ">loyalty</i>
-          <input type="text" id="brand" class="validate"/>
+          <input type="text" id="brand" class="validate" name="maker"/>
           <label for="brand ">Brand</label>
         </div>
       </div> 
@@ -39,7 +39,7 @@
             <span for="cat" class="pl-3 align-top">Category :</span>
           <div class="input-field col-12 ">
             <div class="form-group ">
-                <select class="form-control mb-3 purple lighten-3 grey-dark-text" id="cat">
+                <select class="form-control mb-3 purple lighten-3 grey-dark-text" id="cat" name="category">
                 <option value="" disabled >Choose Category</option>
                 <option *ngFor="let cat of categories">{{cat.name}}</option>
                 </select>
@@ -65,7 +65,7 @@
       <div class="row">
         <div class="input-field col">
           <i class="material-icons prefix ">perm_media</i>
-          <input type="text" id="img" class="validate"/>
+          <input type="text" id="img" class="validate" name="img"/>
           <label for="img ">Photo</label>
         </div>
       </div>

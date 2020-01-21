@@ -17,22 +17,18 @@ app.all('*',function (req, resp, next) {
 //use my middelwares
 app.use(express.static("public"))
 
-app.use('/adminAera',categoryController)
+app.use('/Category',categoryController)
 // app.use(cors());
 
 //connect to DB
 mongoose.connect("mongodb://127.0.0.1:27017/market_an");
 
 // require for model files
-var express = require("express")
-var ProductController = require("./controllers/product")
-
+var ProductController = require("./controllers/product");
 
 app.use('/product',ProductController)
-var router = express.Router();
-const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: true }));
-var middlewareBodyParser = bodyParser.json();
+// app.use(bodyParser.urlencoded({ extended: true }));
+
 
 var files_arr=fs.readdirSync(__dirname+"/models")
 files_arr.forEach(function(file){

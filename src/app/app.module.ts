@@ -18,6 +18,7 @@ import { WishListPageComponent } from './wish-list-page/wish-list-page.component
 import { BodyComponent } from './body/body.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NoPageFoundComponent } from './no-page-found/no-page-found.component';
+import { AllProductsComponent } from './all-products/all-products.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { NoPageFoundComponent } from './no-page-found/no-page-found.component';
     WishListPageComponent,
     BodyComponent,
     HomePageComponent,
-    NoPageFoundComponent
+    NoPageFoundComponent,
+    AllProductsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { catForm } from 'src/app/classes/catForm';
+import { categForm } from 'src/app/classes/catForm';
 import { CategoryService } from 'src/app/services/category/category.service';
+// import {Stringify} from 'querystring';
 
 @Component({
   selector: 'app-add-category',
@@ -10,15 +11,16 @@ import { CategoryService } from 'src/app/services/category/category.service';
 export class AddCategoryComponent implements OnInit {
 
   constructor(private catService:CategoryService) { }
-  // public catModel ={'cat1':String,'sss':String}
+  ngOnInit() {
 
-  public catModel = new catForm('','')
+  }
+  public catModel = new categForm("","");
  
    onSubmit() {
     this.catService.addCategory(this.catModel).subscribe(
       response => console.log('toooooooo db', response),
       error => console.log('error',error)
-      ) 
+      )
       
   }
 
@@ -26,8 +28,6 @@ export class AddCategoryComponent implements OnInit {
   public show(){
     this.catService.listCategory().subscribe(data=>this.categories=data)
   }
-  ngOnInit() {
-
-  }
+ 
 
 }
