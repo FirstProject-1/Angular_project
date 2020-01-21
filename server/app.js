@@ -1,5 +1,9 @@
 var express = require("express")
 var ProductController = require("./controllers/product")
+var adminloginController = require("./controllers/admin-login")
+var userController = require("./controllers/user")
+
+
 
 var mongoose = require("mongoose")
 var fs =require("fs")
@@ -29,12 +33,13 @@ files_arr.forEach(function(file){
 
 //product controller midelWare
 app.use('/product',ProductController)
+app.use('/admin',adminloginController)
+app.use('/user',userController)
 
 
 
 
-
-app.listen(5050 ,function(){
-    console.log("server on 5050")   
+app.listen(8080 ,function(){
+    console.log("server on 8080")   
    });
    

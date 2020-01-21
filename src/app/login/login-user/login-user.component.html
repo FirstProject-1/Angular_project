@@ -1,0 +1,26 @@
+
+<div class="container-fluid">
+    <div class="form" style="width: 500px;height: 700px; margin-left: 450px;">
+      <form #userForm="ngForm" novalidate (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="input-field col s12">
+              <input id="email" type="email" class="validate" class="form-control" [class.is-invalid]="email.invalid" #email="ngModel"
+              required [(ngModel)]="userModel.email" name="txtmail">
+              <label for="email">Email</label>
+            </div>
+          </div>
+        <div class="row">
+            <div class="input-field col s12">
+              <input id="password" type="password" class="validate"class="form-control" [class.is-invalid]="password.invalid" #password="ngModel" required
+              [(ngModel)]="userModel.password" name="password">
+              <label for="password">Password</label>
+            </div>
+          </div>
+          <div class="row">
+            <button class="btn waves-effect waves-light" type="submit" name="action"  type="submit" [disabled]="userForm.form.invalid || topicHasErr" value="Submit Form">Submit
+                <i class="material-icons right">send</i>
+            </button>
+          </div>
+      </form>
+    </div>  
+</div>
