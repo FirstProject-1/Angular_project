@@ -1,27 +1,21 @@
 
-<div class="container mt-4">
+<div class="container" style="margin-top:100px;">
     <div class="row">
         <div class="col-sm-12">
-    <!-- Nav tabs -->
-    <ul class="nav nav-tabs">
-        <li class="nav-item display-4">
-          <a class="nav-link waves-effect waves-dark purple-text purple lighten-4" data-toggle="tab" href="#addPro">Add Products</a>
-        </li>
-        <li class="nav-item display-4">
-          <a class="nav-link waves-effect waves-dark blue-grey-text amber lighten-3" data-toggle="tab" href="#addCateg">Add Category</a>
-        </li>
-      </ul>
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs">
+              <li class="nav-item display-4">
+                <a class="nav-link waves-effect waves-dark blue-grey-text purple lighten-4" data-toggle="tab" href="#addPro">Add Product</a>
+              </li>
+              <li class="nav-item display-4">
+                <a class="nav-link waves-effect waves-dark blue-grey-text" data-toggle="tab" href="#deletPro">Delete Product</a>
+              </li>
+              
+            </ul>
          <!-- Tab panes -->
-    <div class="tab-content" >
-        <div id="addPro" class="container tab-pane" style="margin-left: -10px;">
-          <app-add-product></app-add-product>
-          
+        <div class="tab-content" >
+          <app-products-management></app-products-management>
         </div>
-        <div id="addCateg" class="container tab-pane fade">
-          <app-add-category></app-add-category>
-        </div>
-  
-      </div>
         </div>
 
     </div>

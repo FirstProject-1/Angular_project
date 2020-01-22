@@ -20,6 +20,8 @@ import { LoginUserComponent } from './login/login-user/login-user.component';
 import { LoginAdminComponent } from './login/login-admin/login-admin.component';
 import {FormsModule} from '@angular/forms';
 import { AllProductsComponent } from './all-products/all-products.component';
+import { ProductsManagementComponent } from './admin-area/products-management/products-management.component';
+import { CategoryManagmentComponent } from './admin-area/category-managment/category-managment.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { AllProductsComponent } from './all-products/all-products.component';
     BodyComponent,
     HomePageComponent,
     NoPageFoundComponent,
+    ProductsManagementComponent,
+    CategoryManagmentComponent,
     LoginComponent,
     SignupComponent,
     LoginUserComponent,
