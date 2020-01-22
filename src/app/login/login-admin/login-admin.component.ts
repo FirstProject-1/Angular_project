@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminLogin } from './admin-login';
+import { AdminService } from './admin.service';
 
 @Component({
   selector: 'app-login-admin',
@@ -8,8 +9,8 @@ import { AdminLogin } from './admin-login';
 })
 export class LoginAdminComponent implements OnInit {
   topicHasErr=false;
-  constructor() { }
-  adminModel=new AdminLogin('','')
+  constructor( private log:AdminService) { }
+  public adminModel=new AdminLogin('','')
   ValidateTopic(topicValue)
   {
    if(topicValue==='default')
@@ -23,5 +24,13 @@ export class LoginAdminComponent implements OnInit {
   }
   ngOnInit() {
   }
+
+  onSubmit() {
+    // console.log(this.adminModel)
+    this.log.logAdmin(this.adminModel).subscribe(
+      response => console.log('login try done', response),
+      error => console.log('error',error)
+      )
+    }
 
 }
