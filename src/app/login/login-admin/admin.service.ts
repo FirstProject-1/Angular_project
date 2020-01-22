@@ -5,10 +5,11 @@ import { AdminLogin } from './admin-login';
   providedIn: 'root'
 })
 export class AdminService {
-   _url;
+   
   constructor( private _http:HttpClient) { }
-  admin(user:AdminLogin)
+ public logAdmin(log:AdminLogin)
 {
-return this._http.post<any>(this._url,user);
+  console.log(log)
+    return this._http.post('http://localhost:8080/admin/login',log);
 }
 }

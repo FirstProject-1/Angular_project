@@ -1,34 +1,34 @@
 
-
+<br><br><br>
 <div class="container-fluid">
-    <div class="form" style="width: 500px;height: 700px; margin-left: 450px;">
+    <div class="form" >
       <h1>User Signup</h1>
-      <form #adminForm="ngForm">
+      <form #adminForm="ngForm" method="POST" novalidate (ngSubmit)="onSubmit()">
         <div class="form-group row">
             <div class="input-field col s12">
-                <input placeholder="Placeholder" id="first_name" type="text" class="validate"  class="form-control" [class.is-invalid]="fristname.invalid"
-                #fristname="ngModel" required [(ngModel)]="userModel.fristname" name="txtfname">
+                <input id="first_name" type="text" class="validate"  class="form-control" [class.is-invalid]="fristname.invalid && fristname.touched"
+                #fristname="ngModel" required [(ngModel)]="userModel.txtfname" name="txtfname">
                 <label for="first_name">First Name</label>
               </div>
         </div>
         <div class="form-group row">
             <div class="input-field col s12">
-                <input id="last_name" type="text" class="validate" class="form-control" [class.is-invalid]="lastname.invalid" #lastname="ngModel" required
-                [(ngModel)]="userModel.lastname" name="txtlname">
+                <input id="last_name" type="text" class="validate" class="form-control" [class.is-invalid]="lastname.invalid && lastname.touched" #lastname="ngModel" required
+                [(ngModel)]="userModel.txtlname" name="txtlname">
                 <label for="last_name">Last Name</label>
               </div>
         </div>
         <div class="form-group row">
             <div class="input-field col s12">
-                <input id="email" type="email" class="validate"  class="form-control" [class.is-invalid]="email.invalid" #email="ngModel"
-                required [(ngModel)]="userModel.email" name="txtmail">
+                <input id="email" type="email" class="validate"  class="form-control" [class.is-invalid]="email.invalid && email.touched" #email="ngModel"
+                required [(ngModel)]="userModel.txtmail" name="txtmail">
                 <label for="email">Email</label>
               </div>
          
         </div>
         <div class="form-group row">
             <div class="input-field col s12">
-                <input id="password" type="password" class="validate" class="form-control" [class.is-invalid]="password.invalid" #password="ngModel" required
+                <input id="password" type="password" class="validate" class="form-control" [class.is-invalid]="password.invalid && password.touched" #password="ngModel" required
                 [(ngModel)]="userModel.password" name="password">
                 <label for="password">Password</label>
               </div>

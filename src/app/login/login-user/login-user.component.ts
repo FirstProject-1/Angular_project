@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserLogin } from './user-login';
+import { UserloginService } from './userlogin.service';
 
 @Component({
   selector: 'app-login-user',
@@ -8,8 +9,8 @@ import { UserLogin } from './user-login';
 })
 export class LoginUserComponent implements OnInit {
   topicHasErr=false;
-  constructor() { }
-  userModel=new UserLogin('asmaaayman@yahoo.com',"dhdgugj54253")
+  constructor( private log:UserloginService) { }
+  public userModel=new UserLogin('','')
   ValidateTopic(topicValue)
   {
    if(topicValue==='default')
@@ -23,5 +24,15 @@ export class LoginUserComponent implements OnInit {
   }
   ngOnInit() {
   }
+
+
+  onSubmit() {
+    // console.log(this.userModel)
+    this.log.logUser(this.userModel).subscribe(
+      response => console.log('toooooooo db', response),
+      error => console.log('error',error)
+      )
+    }
+
 
 }
