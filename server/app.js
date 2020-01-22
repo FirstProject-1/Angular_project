@@ -1,9 +1,11 @@
-var express =require("express")
+var express = require("express")
+var ProductController = require("./controllers/product")
+var adminloginController = require("./controllers/admin-login")
+var userController = require("./controllers/user")
+var categoryController= require('./controllers/category')
 var mongoose=require("mongoose");
 var fs=require('fs')
 // const cors=require('cors');
-
-var categoryController= require('./controllers/category')
 
 //create my server
 var app = express()
@@ -18,15 +20,17 @@ app.all('*',function (req, resp, next) {
 app.use(express.static("public"))
 
 app.use('/Category',categoryController)
+app.use('/product',ProductController)
+app.use('/admin',adminloginController)
+app.use('/user',userController)
 // app.use(cors());
 
 //connect to DB
 mongoose.connect("mongodb://127.0.0.1:27017/market_an");
 
 // require for model files
-var ProductController = require("./controllers/product");
 
-app.use('/product',ProductController)
+
 // app.use(bodyParser.urlencoded({ extended: true }));
 
 
@@ -34,6 +38,8 @@ var files_arr=fs.readdirSync(__dirname+"/models")
 files_arr.forEach(function(file){
   require(__dirname+"/models/"+file);
 });
+
+//product controller midelWare
 
 
 

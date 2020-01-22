@@ -1,8 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
-
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
@@ -12,12 +9,16 @@ import { AddProductComponent } from './admin-area/add-product/add-product.compon
 import { AddCategoryComponent } from './admin-area/add-category/add-category.component';
 import{HttpClientModule} from '@angular/common/http';
 import { CategoryService } from './services/category/category.service';
-
 import { CartPageComponent } from './cart-page/cart-page.component';
 import { WishListPageComponent } from './wish-list-page/wish-list-page.component';
 import { BodyComponent } from './body/body.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NoPageFoundComponent } from './no-page-found/no-page-found.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { LoginUserComponent } from './login/login-user/login-user.component';
+import { LoginAdminComponent } from './login/login-admin/login-admin.component';
+import {FormsModule} from '@angular/forms';
 import { AllProductsComponent } from './all-products/all-products.component';
 import { ProductsManagementComponent } from './admin-area/products-management/products-management.component';
 import { CategoryManagmentComponent } from './admin-area/category-managment/category-managment.component';
@@ -35,9 +36,13 @@ import { CategoryManagmentComponent } from './admin-area/category-managment/cate
     BodyComponent,
     HomePageComponent,
     NoPageFoundComponent,
-    AllProductsComponent,
     ProductsManagementComponent,
-    CategoryManagmentComponent
+    CategoryManagmentComponent,
+    LoginComponent,
+    SignupComponent,
+    LoginUserComponent,
+    LoginAdminComponent,
+    AllProductsComponent
   ],
   imports: [
     BrowserModule,
