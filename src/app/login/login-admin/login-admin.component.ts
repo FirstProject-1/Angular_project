@@ -8,7 +8,7 @@ import { AdminLogin } from './admin-login';
 })
 export class LoginAdminComponent implements OnInit {
   topicHasErr=false;
-  constructor(private adminservice) { }
+  constructor() { }
   adminModel=new AdminLogin('','')
   ValidateTopic(topicValue)
   {

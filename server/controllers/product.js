@@ -13,9 +13,9 @@ router.post("/addProduct",middlewareBodyParser,function(req,resp,next){
     var product = new productModel()
     product.name=req.body.name;
     product.categorey=req.body.categorey;
-    product.macker = req.body.macker;
+    product.description=req.body.description;
+    product.maker = req.body.maker;
     product.price =req.body.price;
-    product.desc =req.body.desc;
     product.img =req.body.img;
 
 product.save(function(err,data){

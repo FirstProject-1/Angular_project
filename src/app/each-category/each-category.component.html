@@ -1,0 +1,38 @@
+<section class=" bg-light">
+    <div class="container">
+    <div class="row justify-content-center mb-3 pb-3">
+      <div class="col-md-12 text-center">
+        <h2 class="mb-4">Avilabale products of -categoray-</h2>
+        <p>-description of category-</p>
+      </div>
+    </div>   		
+    </div>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-3"  *ngFor="let product of products">
+                <div class="card hoverable">
+                  <div class="card-image">
+                    <img src="https://cms.souqcdn.com/sanfronto/eg/2018/Web/LPs/appliances-lp/appliances-en_06.jpg" >
+                    <a class="btn-floating  halfway-fab btn-small waves-effect waves-dark deep-purple lighten-1 "><i class="material-icons">favorite_border</i></a>
+                    <a class=" btn-floating halfway-fab btn-small waves-effect waves-dark deep-purple lighten-1" style="right:70px;"><i class="material-icons">shopping_cart</i></a>
+                  </div>
+                  <div class="card-content">
+                    <p class="deep-purple-text">{{product.name}}</p>
+                    <p class="deep-purple-text">{{product.price}}</p>
+                  </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+
+    <ul class="pagination center offset-5">
+        <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+        <li class="active deep-purple lighten-1"><a href="#!">1</a></li>
+        <li class="waves-effect"><a href="#!">2</a></li>
+        <li class="waves-effect"><a href="#!">3</a></li>
+        <li class="waves-effect"><a href="#!">4</a></li>
+        <li class="waves-effect"><a href="#!">5</a></li>
+        <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+      </ul>
+</section>

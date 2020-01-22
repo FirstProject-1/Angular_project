@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoryService } from '../services/category/category.service';
 
 @Component({
   selector: 'app-home-page',
@@ -6,12 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
-  categories=["1","2","e",""]
-  products=["","","","","","","","",""]
+  public categories=[]
   
-  constructor() { }
+  constructor(private catService:CategoryService) { }
 
   ngOnInit() {
+    this.catService.listCategory().subscribe(data=>this.categories=data)
   }
 
 }
