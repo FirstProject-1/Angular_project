@@ -3,11 +3,11 @@
 <div class="container-fluid">
     <div class="form" style="width: 500px;height: 700px; margin-left: 450px;">
       <h1>User Signup</h1>
-      <form #adminForm="ngForm">
+      <form #userForm="ngForm" novalidate method="POST" (ngSubmit)="onSubmit()">
         <div class="form-group row">
             <div class="input-field col s12">
                 <input placeholder="Placeholder" id="first_name" type="text" class="validate"  class="form-control" [class.is-invalid]="fristname.invalid"
-                #fristname="ngModel" required [(ngModel)]="userModel.fristname" name="txtfname">
+                #txtfname="ngModel" required [(ngModel)]="userModel.fristname" name="txtfname">
                 <label for="first_name">First Name</label>
               </div>
         </div>
