@@ -19,6 +19,8 @@ import { BodyComponent } from './body/body.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NoPageFoundComponent } from './no-page-found/no-page-found.component';
 import { AllProductsComponent } from './all-products/all-products.component';
+import { ProductsManagementComponent } from './admin-area/products-management/products-management.component';
+import { CategoryManagmentComponent } from './admin-area/category-managment/category-managment.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { AllProductsComponent } from './all-products/all-products.component';
     BodyComponent,
     HomePageComponent,
     NoPageFoundComponent,
-    AllProductsComponent
+    AllProductsComponent,
+    ProductsManagementComponent,
+    CategoryManagmentComponent
   ],
   imports: [
     BrowserModule,

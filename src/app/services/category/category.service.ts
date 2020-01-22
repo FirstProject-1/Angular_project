@@ -13,11 +13,15 @@ export class CategoryService {
   constructor(private http: HttpClient) { }
   
   addCategory(cat:categForm) {
-   // console.log(cat)
+   console.log(cat)
     return this.http.post('http://localhost:8080/Category/add',cat);
   }
   
   listCategory():Observable<categories[]>{
     return this.http.get<categories[]>("http://localhost:8080/Category/list")
+  }
+  deletCategory(Category_id):Observable<any>{
+    // console.log(Category_id)
+    return this.http.get("http://localhost:8080/Category/delete/"+Category_id);
   }
 }

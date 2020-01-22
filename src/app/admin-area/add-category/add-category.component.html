@@ -1,5 +1,6 @@
 <div class="row amber lighten-3">
 <form #catForm="ngForm" novalidate method="POST" (ngSubmit)="onSubmit()"class="col mt-4">
+  {{catModel.catName}}
   <div class="row">
     <div class="input-field col">
       <i class="material-icons prefix ">mode_edit</i>
@@ -10,7 +11,7 @@
   <div class="row">
     <div class="input-field col s6">
       <i class="material-icons prefix ">description</i>
-      <input type="text" id="catDes" class="validate" name="catDescription" [class.is-invalid]="name.invalid && name.touched" #description="ngModel" [(ngModel)]="catModel.catDescription">
+      <input type="text" id="catDes" class="validate" name="catDescription" [class.is-invalid]="name.invalid && name.touched" #name="ngModel" [(ngModel)]="catModel.catDescription">
       <label for="des">description</label>
     </div>
   </div>
