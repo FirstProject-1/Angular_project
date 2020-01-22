@@ -4,6 +4,7 @@ import { CartPageComponent } from './cart-page/cart-page.component';
 import { NoPageFoundComponent } from './no-page-found/no-page-found.component';
 import { WishListPageComponent } from './wish-list-page/wish-list-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { AdminAreaComponent } from './admin-area/admin-area.component';
 
 
 
@@ -12,7 +13,9 @@ const routes: Routes = [
   {path:"home",component:HomePageComponent},
   {path:"addCart",component:CartPageComponent},
   {path:"wishList",component:WishListPageComponent},
+  {path:"manageCategory",component:AdminAreaComponent},
   {path:"**",component:NoPageFoundComponent}
+  
 ];
 
 @NgModule({

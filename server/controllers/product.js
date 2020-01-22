@@ -7,20 +7,22 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 var middlewareBodyParser = bodyParser.json();
 
-
+// add product
 router.post("/addProduct",middlewareBodyParser,function(req,resp,next){
     var productModel = mongoose.model("products")
     var product = new productModel()
-    product.name=req.body.name;
-    product.categorey=req.body.categorey;
-    product.macker = req.body.macker;
-    product.price =req.body.price;
-    product.desc =req.body.desc;
-    product.img =req.body.img;
-
-product.save(function(err,data){
-    resp.json(data);
-    console.log(data);
+     product.name=req.body.name;
+     product.desc =req.body.desc;
+     product.price =req.body.price;
+     product.brand =req.body.brand;
+     product.macker = req.body.maker;
+     product.img =req.body.img;
+     product.categorey=req.body.category;
+     
+    
+   product.save(function(err,data){
+      resp.json(data);
+      console.log(data);
 })
 })
 
@@ -48,6 +50,7 @@ router.get('/deleteProduct/:_id',function(req,resp){
     })
     resp.redirect('/product/listProudct')
 })
+
 //  update product
 router.put('/updateProduct/:_id',function(req,resp){
     mongoose.model('products').update()

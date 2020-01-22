@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'servises/product.service';
 import { Product } from 'servises/product';
+import { CategoryService } from '../services/category/category.service';
 
 @Component({
   selector: 'app-home-page',
@@ -8,24 +9,16 @@ import { Product } from 'servises/product';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
-  categories=["1","2","e",""]
+  public categories=[]
   productModel=[]
-  // public products = new Product('','','','','','')
-  constructor(private prodServe:ProductService) { }
-
-
+  constructor(private prodServe:ProductService,private catService:CategoryService) { }
   ngOnInit() {
-    // this.prodServe.AddProduct(this.products).subscribe(resp =>
-    //   console.log('Success!', resp),
-    //   error => console.log('error', error))
-    //  alert("ok ")
-
     this.prodServe.getAllProduct().subscribe(data=>
       {
         this.productModel=data;
       })
 
+      this.catService.listCategory().subscribe(data=>this.categories=data)
+  
 
-  }
-
-}
+}}

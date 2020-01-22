@@ -12,12 +12,13 @@ export class ProductService {
 
   //add product method
    AddProduct(product:Product){
-     return this.http.post<any>('http://localhost:5050/product/addProduct',product)
+     console.log(product)
+    return  this.http.post<any>('http://localhost:8080/product/addProduct',product)
    }
 
    //list product method
    getAllProduct():Observable<any>{
-    return this.http.get('http://localhost:5050/product/listProudct')
+    return this.http.get('http://localhost:8080/product/listProudct')
    }
 
 }
