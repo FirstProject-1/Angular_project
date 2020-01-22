@@ -1,4 +1,8 @@
-var express =require("express")
+var express = require("express")
+var ProductController = require("./controllers/product")
+var adminloginController = require("./controllers/admin-login")
+var userController = require("./controllers/user")
+var categoryController= require('./controllers/category')
 var mongoose=require("mongoose");
 var fs=require('fs')
 var categoryController= require("./controllers/category")
@@ -8,6 +12,7 @@ var ProductController = require("./controllers/product")
 //create my server
 var app = express()
 mongoose.connect("mongodb://127.0.0.1:27017/Masn_DB");
+
 //middlewareBodyParser
 var router = express.Router();
 const bodyParser = require('body-parser');
@@ -21,6 +26,9 @@ app.all('*',function (req, resp, next) {
   resp.setHeader("Access-Control-Allow-Headers","Content-Type")
   next()
 })
+//use my middelwares
+app.use(express.static("public"))
+
 
 //files in models
 var files_arr=fs.readdirSync(__dirname+"/models")
@@ -28,15 +36,18 @@ files_arr.forEach(function(file){
   require(__dirname+"/models/"+file);
 });
 
-//use my middelwares
-app.use(express.static("public"))
-
 
 //midelware for product
 app.use('/product',ProductController)
 
 //midelware for Category
 app.use('/Category',categoryController)
+
+//midelware for admin
+app.use('/admin',adminloginController)
+
+//midelware for user
+app.use('/user',userController)
 
 
 //listen 

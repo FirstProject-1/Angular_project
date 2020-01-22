@@ -15,7 +15,7 @@ public categories=[]
 
   }
   public deletThisCategory(categ_id){
-    console.log(categ_id)
+    // console.log(categ_id)
     this.catService.deletCategory(categ_id).subscribe(
       response => console.log('toooooooo db', response),
       error => console.log('error',error)
