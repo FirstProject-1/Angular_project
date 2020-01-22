@@ -16,13 +16,12 @@ route.post("/add", middlewareBodyParser, function (req, resp) {
     new_category.description = req.body.catDescription;
 
     new_category.save(function (err,data) {
-        resp.json(data);
-        /* 
         if (!err){
             console.log(req.body);
-        } */
+            resp.json(data);
+         }
     })
-    // resp.send("this category is added ")
+    resp.send("this category is added ")
 
 })
 
@@ -32,7 +31,7 @@ route.get('/list',function(req,resp){
     })
 })
 
-route.get('/deleteCategory/:id',middlewareBodyParser,function(req,resp){
+route.get('/delete/:id',middlewareBodyParser,function(req,resp){
     mongoose.model('category').remove({_id:req.params.id},function(err,data){
         if(!err) console.log(req.params.id)
     })

@@ -19,6 +19,10 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { NoPageFoundComponent } from './no-page-found/no-page-found.component';
 import { ProductService } from 'servises/product.service';
 import{HttpClientModule, HttpClient} from '@angular/common/http'; 
+import { AllProductsComponent } from './all-products/all-products.component';
+import { ProductsManagementComponent } from './admin-area/products-management/products-management.component';
+import { CategoryManagmentComponent } from './admin-area/category-managment/category-managment.component';
+import { SliderComponent } from './slider/slider.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,11 @@ import{HttpClientModule, HttpClient} from '@angular/common/http';
     WishListPageComponent,
     BodyComponent,
     HomePageComponent,
-    NoPageFoundComponent
+    NoPageFoundComponent,
+    AllProductsComponent,
+    ProductsManagementComponent,
+    CategoryManagmentComponent,
+    SliderComponent
   ],
   imports: [
     BrowserModule,

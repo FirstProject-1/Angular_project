@@ -1,6 +1,6 @@
-export class catForm {
+export class categForm {
     constructor(
-        public name:String,
-        public description:String
+        public catName:String,
+        public catDescription:String
     ){}
 }

@@ -5,6 +5,7 @@ import { NoPageFoundComponent } from './no-page-found/no-page-found.component';
 import { WishListPageComponent } from './wish-list-page/wish-list-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { AdminAreaComponent } from './admin-area/admin-area.component';
+import { CategoryManagmentComponent } from './admin-area/category-managment/category-managment.component';
 
 
 
@@ -13,7 +14,9 @@ const routes: Routes = [
   {path:"home",component:HomePageComponent},
   {path:"addCart",component:CartPageComponent},
   {path:"wishList",component:WishListPageComponent},
-  {path:"manageCategory",component:AdminAreaComponent},
+  {path:"manageCategory",component:CategoryManagmentComponent},
+  {path:"manageProduct",component:AdminAreaComponent},
+
   {path:"**",component:NoPageFoundComponent}
   
 ];

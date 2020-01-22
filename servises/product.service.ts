@@ -21,4 +21,13 @@ export class ProductService {
     return this.http.get('http://localhost:8080/product/listProudct')
    }
 
+   // delete product by _id
+ deleteProduct(_id):Observable<any>{
+  return this.http.get("http://localhost:8080/product/deleteProduct/"+_id)
 }
+}
+
+
+
+
+
