@@ -7,7 +7,7 @@ var mongoose=require("mongoose");
 var fs=require('fs')
 var categoryController= require("./controllers/category")
 var ProductController = require("./controllers/product")
-
+var paymentControlle = require("./controllers/payment")
 
 //create my server
 var app = express()
@@ -48,8 +48,8 @@ app.use('/admin',adminloginController)
 
 //midelware for user
 app.use('/user',userController)
-
-
+//midelware for payment
+app.use('/payment',paymentControlle)
 //listen 
 app.listen(8080,function(){
     console.log("server on port 8080 ");

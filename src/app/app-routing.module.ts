@@ -8,7 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { AdminAreaComponent } from './admin-area/admin-area.component';
 import { CategoryManagmentComponent } from './admin-area/category-managment/category-managment.component';
-
+import { PaymentComponent } from './payment/payment.component'
 
 
 const routes: Routes = [
@@ -20,7 +20,7 @@ const routes: Routes = [
   {path:"wishList",component:WishListPageComponent},
   {path:"manageCategory",component:CategoryManagmentComponent},
   {path:"manageProduct",component:AdminAreaComponent},
-
+  {path:"payment",component:PaymentComponent},
   {path:"**",component:NoPageFoundComponent}
   
 ];
