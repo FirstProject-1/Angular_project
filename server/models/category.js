@@ -1,9 +1,8 @@
 var mongoose=require("mongoose")
-// register model
 var Schema=mongoose.Schema
 var category=new Schema({
-  name:String,
-  description:String
+  catName:String,
+  catDescription:String
 })
 // ORM
 mongoose.model("category",category)

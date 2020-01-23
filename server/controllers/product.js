@@ -7,21 +7,23 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 var middlewareBodyParser = bodyParser.json();
 
-
+// add product
 router.post("/addProduct",middlewareBodyParser,function(req,resp,next){
     var productModel = mongoose.model("products")
     var product = new productModel()
-    product.name=req.body.name;
-    product.categorey=req.body.categorey;
-    product.description=req.body.description;
-    product.maker = req.body.maker;
-    product.price =req.body.price;
-    product.img =req.body.img;
-
-product.save(function(err,data){
-    resp.json(data);
-    console.log(data);
-})
+     product.name=req.body.name;
+     product.desc =req.body.desc;
+     product.price =req.body.price;
+     product.brand =req.body.brand;
+     product.macker = req.body.maker;
+     product.img =req.body.img;
+     product.categorey=req.body.category;
+     
+    
+   product.save(function(err,data){
+      resp.json(data);
+      console.log(data);
+    })
 })
 
 // list Proudct
@@ -39,6 +41,7 @@ router.get('/productDetails/:_id',function(req,resp){
     })
 })
 
+
 // delete proudct
 router.get('/deleteProduct/:_id',function(req,resp){
     mongoose.model('products').remove({_id:req.params._id},function(err,data){
@@ -46,12 +49,18 @@ router.get('/deleteProduct/:_id',function(req,resp){
     })
     resp.redirect('/product/listProudct')
 })
+
 //  update product
 router.put('/updateProduct/:_id',function(req,resp){
     mongoose.model('products').update()
 })
 
-
-// delete product
+  // select specific product by id 
+router.get('/productDetails/:_id',function(req,resp){
+    var _id=req.params._id
+    mongoose.model('products').findOne({_id:_id},function(err,data){
+        resp.json(data)
+    })
+})
 
 module.exports=router;

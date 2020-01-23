@@ -8,6 +8,8 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { AdminAreaComponent } from './admin-area/admin-area.component';
 import { CategoryManagmentComponent } from './admin-area/category-managment/category-managment.component';
+import { AllProductsComponent } from './all-products/all-products.component';
+import { EachCategoryComponent } from './each-category/each-category.component';
 
 
 
@@ -20,7 +22,7 @@ const routes: Routes = [
   {path:"wishList",component:WishListPageComponent},
   {path:"manageCategory",component:CategoryManagmentComponent},
   {path:"manageProduct",component:AdminAreaComponent},
-
+  {path:'each',component:EachCategoryComponent},
   {path:"**",component:NoPageFoundComponent}
   
 ];

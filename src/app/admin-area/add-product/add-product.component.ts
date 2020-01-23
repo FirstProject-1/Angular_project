@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from 'src/app/services/category/category.service';
+import { ProductService } from 'servises/product.service';
+import { Product } from 'servises/product';
 
 @Component({
   selector: 'app-add-product',
@@ -8,9 +10,17 @@ import { CategoryService } from 'src/app/services/category/category.service';
 })
 export class AddProductComponent implements OnInit {
 
-  constructor(private catService:CategoryService) { }
-
+  constructor(private catService:CategoryService,private prodServe:ProductService) { }
+  public produModel = new Product("","","","","","","")
   public categories=[];
+
+  onSubmit(){
+    console.log(this.produModel)
+    this.prodServe.AddProduct(this.produModel).subscribe(resp =>
+      console.log('Success!', resp),
+      error => console.log('error', error))
+    //  alert("ok")
+  }
   ngOnInit() {
     this.catService.listCategory().subscribe(data=>this.categories=data)
   }

@@ -3,11 +3,13 @@ var mongoose=require("mongoose")
 var Schema=mongoose.Schema
 var products=new Schema({
     name:String,
-    categorey:String,
-    description:String,
-    maker:String,
+    desc:String,
     price:Number,
-    img:String
+    brand:String,
+    macker:String,
+    img:String,
+    categorey:String
+    
 })
 // ORM
 mongoose.model("products",products);

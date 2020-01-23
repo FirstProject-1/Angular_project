@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from 'servises/product.service';
+import { Product } from 'servises/product';
 import { CategoryService } from '../services/category/category.service';
 
 @Component({
@@ -8,11 +10,12 @@ import { CategoryService } from '../services/category/category.service';
 })
 export class HomePageComponent implements OnInit {
   public categories=[]
-  
+
   constructor(private catService:CategoryService) { }
-
+  
   ngOnInit() {
-    this.catService.listCategory().subscribe(data=>this.categories=data)
-  }
+    
+      this.catService.listCategory().subscribe(data=>this.categories=data)
+  
 
-}
+}}

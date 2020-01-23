@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Signup } from './signup';
+import { UsersignupService } from './usersignup.service';
 
 @Component({
   selector: 'app-signup',
@@ -8,7 +9,7 @@ import { Signup } from './signup';
 })
 export class SignupComponent implements OnInit {
   topicHasErr=false;
-  constructor() { }
+  constructor( private user:UsersignupService) { }
   userModel=new Signup('','','','')
   ValidateTopic(topicValue)
   {
@@ -23,5 +24,17 @@ export class SignupComponent implements OnInit {
   }
   ngOnInit() {
   }
+  
+
+
+  onSubmit(){
+    console.log(this.userModel)
+    this.user.addUser(this.userModel).subscribe(
+      response => console.log('toooooooo db', response),
+      error => console.log('error',error)
+      )
+  }
+
+
 
 }

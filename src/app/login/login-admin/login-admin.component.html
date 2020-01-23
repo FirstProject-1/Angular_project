@@ -1,18 +1,17 @@
 
-
 <div class="container-fluid">
     <div class="form">
-      <form #userForm="ngForm" novalidate (ngSubmit)="onSubmit()">
+      <form #userForm="ngForm" method="POST" novalidate (ngSubmit)="onSubmit()">
         <div class="row">
             <div class="input-field col s12">
-              <input id="email" type="email" class="validate"  class="form-control" [class.is-invalid]="email.invalid" #email="ngModel"
-              required [(ngModel)]="adminModel.email" name="txtmail">
+              <input type="email" class="validate"  class="form-control" [class.is-invalid]="email.invalid && email.touched" #email="ngModel"
+              required [(ngModel)]="adminModel.txtmail" name="txtmail">
               <label for="email">Email</label>
             </div>
           </div>
         <div class="row">
             <div class="input-field col s12">
-              <input id="password" type="password" class="validate" class="form-control" [class.is-invalid]="password.invalid" #password="ngModel" required
+              <input type="password" class="validate" class="form-control" [class.is-invalid]="password.invalid &&password.touched" #password="ngModel" required
               [(ngModel)]="adminModel.password" name="password">
               <label for="password">Password </label>
             </div>

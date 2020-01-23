@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from'@angular/common/http';
+import { Signup } from './signup';
 
 
 @Injectable({
@@ -7,5 +8,16 @@ import { HttpClient } from'@angular/common/http';
 })
 export class UsersignupService {
 
-  constructor( private _http:HttpClient) { }
+  constructor( private http:HttpClient) { }
+
+
+
+
+public addUser(sign:Signup){
+  console.log(sign)
+  
+  return this.http.post('http://localhost:8080/user/signup',sign);
 }
+
+}
+
