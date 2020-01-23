@@ -1,23 +1,27 @@
-//first nav
 
-
-<br><br><br><br>
-<div  style="width: 81%; margin: 0 auto;border: 1px #eae0e0 solid;" >
-<div class="row"style="height: 57px;">
-  <div class="col-sm-4"><br><span style="margin-left: 37px;">you have(3)  proudct in shoppin carts</span></div>
-  <div class="col-sm-8"><br><span style="margin-left: 507px;">
-    <button type="button" class="btn btn-secondary">clear shopping cart</button> </span></div>
+<div class="container mx-auto" style="margin-top:100px ;border: 1px #eae0e0 solid;" >
+<div class="row mt-4">
+  <div class="col-6">
+    <span >you have(3)  proudct in shoppin carts</span>
+  </div>
+  <div class="col-6">
+    <button type="button" class="btn btn-secondary right">clear shopping cart</button>
+  </div>
 </div><hr>
-<div class="list-group" class="container"  *ngFor="let order of orders" style=" margin-top: 10px;">
+<div class="list-group " class="container"  *ngFor="let order of orders">
   
-    <a  class="list-group-item list-group-item-action list-group-item-info">
+    <a  class="list-group-item list-group-item-action list-group-item-info mb-4">
       <div class="row">
-        <div class="col-sm-2">{{order.id +" -- "}}</div>
+        <div class="col-sm-3 ">img {{order.img}}</div>
         <div class="col-sm-3">proudct</div>
-        <div class="col-sm-5">quintity</div>
-        <div class="col-sm-2">totalPriced{{" "+order.time}}</div>
+        <div class="col-sm-3">price :</div>
+        <div class="col-sm-3 right">
+          <!--  (ngSubmit)="deletThisProduct(order._id)" -->
+          <form >
+          <button type="submit" class="btn text-lowercase waves-effect waves-light dark-text mt-3">delete</button>
+          </form>
+        </div>
       </div>
-        <!-- <h5>{{order.id +" -- "}}{{" "+order.time}}</h5> -->
     </a>
 </div>
 <br>
