@@ -11,9 +11,9 @@ export class CartServiceService {
 
   constructor(private http: HttpClient) { }
 
-  cartProducting(prductId):Observable<any>{
+  cartProducting(prductId,productPrice):Observable<any>{
     console.log(prductId)
-    return this.http.get<any>('http://localhost:8080/cart/add/'+prductId)
+    return this.http.get<any>('http://localhost:8080/cart/add/'+prductId+'/'+productPrice)
   }
 
   cartDetails():Observable<any>{

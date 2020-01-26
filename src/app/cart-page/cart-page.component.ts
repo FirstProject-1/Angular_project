@@ -8,7 +8,7 @@ import { CartServiceService } from '../services/cart/cart-service.service';
 })
 export class CartPageComponent implements OnInit {
   productsInCart=[]
-  constructor(private cartService:CartServiceService) { }
+  constructor(private cartService:CartServiceService){ }
 
   ngOnInit() {
     this.cartService.cartDetails().subscribe(data=>{this.productsInCart=data;console.log(data)})

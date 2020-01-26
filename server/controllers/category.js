@@ -14,7 +14,6 @@ route.post("/add", middlewareBodyParser, function (req, resp,next) {
     var new_category = new categoryModel()
     new_category.catName = req.body.catName;
     new_category.catDescription = req.body.catDescription;
-
     new_category.save(function (err,data) {
         if (!err){
             console.log(req.body);

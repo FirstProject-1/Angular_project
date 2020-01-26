@@ -11,21 +11,23 @@
         </div>
       </div><hr>
         
-      <div class="list-group " class="container-fluid"  *ngFor="let product of productsInCart">
+      <div class="list-group" class="container-fluid"  *ngFor="let product of productsInCart">
         
-            <a  class="list-group-item list-group-item-action list-group-item-info mb-4">
+            <div  class="list-group-item list-group-item-info mb-4">
               <div class="row">
-                <div class="col-sm-4"><img src="{{product.img}}" class="col"></div>
+                <div class="col-sm-3"><img src="{{product.img}}" class="col"></div>
                 <div class="col-sm-4"><h5>{{product.name}}</h5></div>
+                <div class="col-sm-1"><h5>1</h5></div>
+                <!-- {{cart.totalQuantity}} -->
                 <div class="col-sm-2"><h5>{{product.price}} LE</h5></div>
-                <div class="col-sm-2 right">
+                <div class="col-sm-2">
                   <!--  (ngSubmit)="deletThisProduct(order._id)" -->
                   <form >
-                  <button type="submit" class="btn text-lowercase waves-effect waves-light dark-text mt-3">delete</button>
+                  <button type="submit" class="btn btn-small text-lowercase waves-effect waves-light dark-text mt-3">delete</button>
                   </form>
                 </div>
               </div>
-            </a>
+            </div>
           </div>
     </div>
   </div>

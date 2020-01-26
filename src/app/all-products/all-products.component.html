@@ -12,11 +12,7 @@
             <div class="card-image">
               <img src="{{product.img}}" >
               <a class="btn-floating halfway-fab btn-small waves-effect waves-dark deep-purple lighten-1"><i class="material-icons">favorite_border</i></a>
-              <a (click)="addToCart(product._id)" class="btn-floating halfway-fab btn-small waves-effect waves-dark deep-purple lighten-1" style="right:70px;" name="productId"><i class="material-icons" value="product._id">shopping_cart</i></a>
-<!-- 
-              <form  (ngSubmit)="addToCart(product._id)">
-              <button type="checkbox" class="btn-floating halfway-fab btn-small waves-effect waves-dark deep-purple lighten-1" style="right:70px;" name="productId"><i class="material-icons" value="product._id">shopping_cart</i></button>
-              </form> -->
+              <a (click)="addToCart(product._id,product.price)" class="btn-floating halfway-fab btn-small waves-effect waves-dark deep-purple lighten-1" style="right:70px;" name="productId"><i class="material-icons" value="product._id">shopping_cart</i></a>
             </div>
             
             <div>

@@ -16,9 +16,9 @@ export class AllProductsComponent implements OnInit {
     this.prodServe.getAllProduct().subscribe(data=>{this.productModel=data;})
   }
 
-  public addToCart(product_id){
+  public addToCart(product_id,product_price){
     console.log(product_id)
-    this.cartService.cartProducting(product_id).subscribe(
+    this.cartService.cartProducting(product_id,product_price).subscribe(
       response => console.log('add to cart', response),
       error => console.log('error',error)
       )
