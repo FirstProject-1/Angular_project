@@ -22,21 +22,20 @@ route.post("/add", middlewareBodyParser, function (req, resp,next) {
             
          }
     })
-    resp.send("this category is added ")
     
 })
 
 route.get('/list',function(req,resp){
     mongoose.model('category').find(function(err,data){
-        resp.json(data);
+        resp.send(data);
     })
 })
 
 route.get('/delete/:id',middlewareBodyParser,function(req,resp){
-    mongoose.model('category').remove({_id:req.params.id},function(err,data){
+    mongoose.model('category').deleteOne({_id:req.params.id},function(err,data){
         if(!err) console.log(req.params.id)
+
     })
-    resp.send("this category is deleted ")
 })
 
 // select specific category by id

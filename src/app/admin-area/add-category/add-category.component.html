@@ -3,14 +3,14 @@
   <div class="row">
     <div class="input-field col">
       <i class="material-icons prefix ">mode_edit</i>
-      <input type="text" id="catName" name="catName" class="validate" required [class.is-invalid]="name.invalid &&name.touched" #name="ngModel" [(ngModel)]="catModel.catName"/>
+      <input type="text" id="catName" name="catName" class="validate" required #catName="ngModel" [(ngModel)]="catModel.catName" [class.is-invalid]="catName.invalid && catName.touched"/>
       <label for="name">Category Name</label>
     </div>
   </div>
   <div class="row">
     <div class="input-field col s6">
       <i class="material-icons prefix ">description</i>
-      <input type="text" class="validate" name="catDescription" [class.is-invalid]="name.invalid &&name.touched" #catDescription="ngModel" [(ngModel)]="catModel.catDescription">
+      <input type="text" class="validate" name="catDescription" #catDescription="ngModel" [(ngModel)]="catModel.catDescription"[class.is-invalid]="catDescription.invalid && catDescription.touched">
       <label for="catDescription">description</label>
     </div>
   </div>

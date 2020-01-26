@@ -7,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminAreaComponent implements OnInit {
 
-  public products=[]
   constructor() { }
 
 

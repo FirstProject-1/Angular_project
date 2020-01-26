@@ -22,7 +22,7 @@ const bodyParser = require('body-parser');
 app.all('*',function (req, resp, next) {
   resp.setHeader("Access-Control-Allow-Origin", "*");
   resp.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE");
-  resp.setHeader("Access-Control-Allow-Headers","Content-Type")
+  resp.setHeader("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept")
   next()
 })
 
