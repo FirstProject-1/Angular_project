@@ -11,5 +11,5 @@ export class CartPageComponent implements OnInit {
 
   ngOnInit() {
   }
-
+ 
 }

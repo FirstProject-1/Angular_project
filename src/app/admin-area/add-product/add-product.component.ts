@@ -22,7 +22,7 @@ export class AddProductComponent implements OnInit {
     //  alert("ok")
   }
   ngOnInit() {
-    // this.catService.listCategory().subscribe(data=>this.categories=data)
+    this.catService.listCategory().subscribe(data=>this.categories=data)
   }
 
 }

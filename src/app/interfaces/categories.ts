@@ -1,4 +1,4 @@
 export interface categories{
-    name:String;
-    description:String
+    catName:String;
+    catDescription:String
 }

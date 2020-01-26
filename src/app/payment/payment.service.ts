@@ -7,8 +7,10 @@ import { PaymentClass } from './payment-class';
 })
 export class PaymentService {
 
-  constructor( private http:HttpClient) { }
-  public payment(pay: PaymentClass){
-    return this.http.post('http://localhost:8080/payment/pay',pay);
+  constructor( private _http:HttpClient) { }
+
+  public payment(pay){
+    console.log(pay)
+    return this._http.post('http://localhost:8080/payment/pay',pay);
   }
 }

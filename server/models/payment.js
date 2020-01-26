@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 
 var  userpay= new Schema({
     card: String,
-  card_verification: String
+    verification: String
   
 });
 

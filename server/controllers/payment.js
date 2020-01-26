@@ -3,6 +3,7 @@ var mongoose=require("mongoose");
 var bodyParser=require("body-parser")
 var route=express.Router()
  var app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
   
 
  var middlewareBodyParser= bodyParser.json()
@@ -12,16 +13,16 @@ var route=express.Router()
     var paymentModel=mongoose.model("payment")
     var new_pay=new paymentModel()
     new_pay.card=req.body.card;
-    new_pay.card_verification=req.body.card_verification;
-    mongoose.model("admin").find({
+    new_pay.verification=req.body.verification;
+    mongoose.model("payment").find({
         card:req.body.card,
-      card_verification:req.body.card_verification
+        verification:req.body.verification
     },(function(err,data){
       
-      if(data.length === 0){
-        resp.json("sorry you have not correct number ")
+      if(data.length == 0){
+        resp.json("correct data ")
       }else{
-        resp.json("welcome have a nice day")
+        resp.json("done")
        
       }
     }))

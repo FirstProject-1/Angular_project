@@ -1,55 +1,25 @@
 
-<div class="row ">
+<div class="row " style="margin-top: 100px;">
       
     <div class="col-sm-12 col-md-3 col-lg-3">
     <div style="width: 83%;margin: auto;border: 1px #ccc2c2 solid;padding-bottom: 13px;" >
         <div class="list-group" class="container" *ngFor="let category of categories" style=" margin-top: 10px;">
             <a  class="list-group-item list-group-item-action list-group-item-info" style="background-color:
             darkkhaki;">
-                <span class="">{{category.name}}</span>
+                <span class="">{{category.catName}}</span>
             </a>
         </div> 
     </div>
     </div>
     
-    <div class="col-sm-9" style="border-left: 1px solid #b9b0b0;  display: flex;">
-        <div class="row" >
-          <div class="col-sm-12 col-md-6 col-lg-3" *ngFor="let product of productModel">
-            <div class="card hoverable">
-              <div class="card-image">
-                <img src="https://cms.souqcdn.com/sanfronto/eg/2018/Web/LPs/appliances-lp/appliances-en_06.jpg" >
-                <a class="btn-floating  halfway-fab btn-small waves-effect waves-dark deep-purple lighten-1 "><i class="material-icons">favorite_border</i></a>
-                <a class=" btn-floating halfway-fab btn-small waves-effect waves-dark deep-purple lighten-1" style="right:70px;"><i class="material-icons">shopping_cart</i></a>
-              </div>
-              
-              <div>
-              <div class="card-content">
-              <h5 class="deep-purple-text">{{product.name}}</h5>
-            </div>
-            </div>
         
-            </div>
-        </div>
-        <!-- <div class="list-group" class="container"  class="col-sm-12 col-md-6  col-lg-6"  *ngFor="let product of productModel" style=" margin-top: 10px;min-height: 360px;height: 155px;padding-bottom: 25px;">
-  
-            <a  class="list-group-item list-group-item-action list-group-item-info" style="margin-top: 10px; 
-            width: 86%;min-width: 233px;height: 98%;">
-            <div style="height: 192px;"><img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%"></div>
-                      <div class="card-body">
-                        <span class="card-title">John Doe</span>
-                        <p class="card-text"> <span>{{product.id +" -- "}}{{" "+product.time}}</span></p>
-                        <a href="#" class="btn btn-primary" style="width: 100%;">See Profile</a>
-                      </div>
-                    <br>
-            </a>
-        </div> -->
-</div></div>
 
-    <!-- <div class="col-sm-12 col-lg-9 col-md-9">
     <div class="col-sm-12 col-md-9 col-lg-9">
        
             <app-all-products></app-all-products>
     
     </div>
    
-</div> -->
+    
+  </div>
+

@@ -13,7 +13,7 @@ export class ProductService {
   //add product method
    AddProduct(product:Product){
      console.log(product)
-    return  this.http.post<any>('http://localhost:8080/product/addProduct',product)
+    return this.http.post<any>('http://localhost:8080/product/addProduct',product)
    }
 
    //list product method
@@ -25,6 +25,10 @@ export class ProductService {
  deleteProduct(_id):Observable<any>{
   return this.http.get("http://localhost:8080/product/deleteProduct/"+_id)
 }
+  // select specific product by id 
+  selectProduct(_id):Observable<any>{
+    return this.http.get("http://localhost:8080/product/productDetails/"+_id)
+  }
 }
 
 

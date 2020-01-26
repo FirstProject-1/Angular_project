@@ -8,6 +8,8 @@ var fs=require('fs')
 var categoryController= require("./controllers/category")
 var ProductController = require("./controllers/product")
 var paymentControlle = require("./controllers/payment")
+var CartController = require("./controllers/cart")
+
 
 //create my server
 var app = express()
@@ -15,9 +17,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/Masn_DB");
 
 //middlewareBodyParser
 var router = express.Router();
-const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: true }));
-var middlewareBodyParser = bodyParser.json();
+
 
 // cross origin 
 app.all('*',function (req, resp, next) {
@@ -26,6 +26,11 @@ app.all('*',function (req, resp, next) {
   resp.setHeader("Access-Control-Allow-Headers","Content-Type")
   next()
 })
+
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
 //use my middelwares
 app.use(express.static("public"))
 
@@ -50,6 +55,12 @@ app.use('/admin',adminloginController)
 app.use('/user',userController)
 //midelware for payment
 app.use('/payment',paymentControlle)
+
+//midelware for cart
+app.use('/cart',CartController)
+
+
+
 //listen 
 app.listen(8080,function(){
     console.log("server on port 8080 ");

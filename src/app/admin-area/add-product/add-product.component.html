@@ -14,7 +14,7 @@
           <i class="material-icons prefix ">description</i>
           <input type="text" class="validate" name="desc"  required [class.is-invalid]="name.invalid &&name.touched"
           #desc="ngModel" [(ngModel)]="produModel.desc"/>
-          <label for="name">Product Name</label>
+          <label for="name">Product description</label>
         </div>
       </div> 
       <!-- price -->
@@ -36,16 +36,16 @@
       <!-- maker -->
       <div class="row">
         <div class="input-field col">
-          <i class="material-icons prefix ">Maker</i>
-          <input type="text" id="brand" class="validate" name="maker" #maker="ngModel" [(ngModel)]="produModel.maker"/>
+          <i class="material-icons prefix ">maker</i>
+          <input type="text" id="maker" class="validate" name="maker" #maker="ngModel" [(ngModel)]="produModel.maker"/>
           <label for="brand ">Brand</label>
         </div>
       </div> 
       <!-- img -->
       <div class="row">
         <div class="input-field col">
-          <i class="material-icons prefix ">Image</i>
-          <input type="text" id="brand" class="validate" name="img" #img="ngModel" [(ngModel)]="produModel.img"/>
+          <i class="material-icons prefix ">image</i>
+          <input type="text" id="img" class="validate" name="img" #img="ngModel" [(ngModel)]="produModel.img"/>
           <label for="brand ">Brand</label>
         </div>
       </div>
@@ -58,7 +58,7 @@
             <div class="form-group ">
                 <select class="form-control mb-3 purple lighten-3 grey-dark-text" #category id="cat" name="category" [(ngModel)]="produModel.category">
                 <option value="" disabled >Choose Category</option>
-                <option *ngFor="let categ of categories">{{categ.name}}</option>
+                <option *ngFor="let categ of categories">{{categ.catName}}</option>
                 </select>
             </div>
           </div>

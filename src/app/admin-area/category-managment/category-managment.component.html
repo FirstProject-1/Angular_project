@@ -23,7 +23,7 @@
                 <div class="col-sm-4 " *ngFor="let category of categories">
                     <!-- {{category._id}}  -->
                     <form  (ngSubmit)="deletThisCategory(category._id)" class="categorylist">
-                    <button type="submit"  class="btn text-lowercase waves-effect waves-light amber lighten-3 blue-grey-text mt-3">{{category.name}} x</button>
+                    <button type="submit"  class="btn text-lowercase waves-effect waves-light amber lighten-3 blue-grey-text mt-3">{{category.catName}} x</button>
                     </form>
                 </div>
             </div>

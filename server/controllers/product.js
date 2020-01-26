@@ -23,7 +23,7 @@ router.post("/addProduct",middlewareBodyParser,function(req,resp,next){
    product.save(function(err,data){
       resp.json(data);
       console.log(data);
-})
+    })
 })
 
 // list Proudct
@@ -38,7 +38,6 @@ router.get('/productDetails/:_id',function(req,resp){
     var _id=req.params._id
     mongoose.model('products').findOne({_id:_id},function(err,data){
         resp.json(data)
-        
     })
 })
 
@@ -56,7 +55,12 @@ router.put('/updateProduct/:_id',function(req,resp){
     mongoose.model('products').update()
 })
 
-
-// delete product
+  // select specific product by id 
+router.get('/productDetails/:_id',function(req,resp){
+    var _id=req.params._id
+    mongoose.model('products').findOne({_id:_id},function(err,data){
+        resp.json(data)
+    })
+})
 
 module.exports=router;
