@@ -1,0 +1,41 @@
+<div class="container" style="margin-top:100px;">
+  <div class="row">
+      <div class="col-sm-12">
+  
+  <ul class="nav nav-tabs">
+      <li class="nav-item display-4">
+        <a class="nav-link waves-effect waves-dark blue-grey-text amber lighten-3" data-toggle="tab" href="#addProduct">Add Product</a>
+      </li>
+      <li class="nav-item display-4">
+        <a class="nav-link waves-effect waves-dark blue-grey-text " data-toggle="tab" href="#deletProduct">Delete Product</a>
+      </li>
+      
+    </ul>
+       <!-- Tab panes -->
+      <div class="tab-content" >
+        <div id="addProduct" class="container tab-pane" style="margin-left: -10px;">
+          <app-add-product></app-add-product>
+          
+        </div>
+        <div id="deletProduct" class="container tab-pane fade">
+          <div class="row">
+              <div class="col-sm-4 " *ngFor="let product of products">
+                  <form  (ngSubmit)="deleteProduct(product._id)" class="categorylist">
+                  <button type="submit" value="product.name" class="btn text-lowercase waves-effect waves-light amber lighten-3 blue-grey-text mt-3">{{product.name}} &times;</button>
+                  </form>
+              </div>
+          </div>
+        </div>
+    
+      </div>
+      </div>
+
+  </div>
+
+  
+</div>
+
+
+<!-- <router-outlet></router-outlet> -->
+
+<!-- <router-outlet></router-outlet> -->

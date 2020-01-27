@@ -1,26 +1,27 @@
-<div class="row purple lighten-4">
-    <form class="col mt-4" action="" method="POST">
-        <!-- name -->
+  <form #productForm="ngForm" novalidate class="col mt-4" (ngSubmit)="onSubmit()"  method="POST"  >
+    <!-- name -->
         <div class="row">
             <div class="input-field col">
               <i class="material-icons prefix ">mode_edit</i>
-              <input type="text" id="name" class="validate"/>
+              <input type="text" class="validate" name="name"  required [class.is-invalid]="name.invalid &&name.touched"
+              #name="ngModel" [(ngModel)]="produModel.name"/>
               <label for="name">Product Name</label>
             </div>
           </div>    
         <!-- des -->
       <div class="row">
-        <div class="input-field col s6">
+        <div class="input-field col">
           <i class="material-icons prefix ">description</i>
-          <textarea id="des" class="materialize-textarea" name="description"></textarea>
-          <label for="des">description</label>
+          <input type="text" class="validate" name="desc"  required [class.is-invalid]="name.invalid &&name.touched"
+          #desc="ngModel" [(ngModel)]="produModel.desc"/>
+          <label for="name">Product Name</label>
         </div>
-      </div>
+      </div> 
       <!-- price -->
       <div class="row">
         <div class="input-field col">
           <i class="material-icons prefix ">attach_money</i>
-          <input type="text" id="price" class="validate" name="price"/>
+          <input type="text" id="price" class="validate" name="price" #price="ngModel" [(ngModel)]="produModel.price"/>
           <label for="price">Price</label>
         </div>
       </div>
@@ -28,10 +29,26 @@
       <div class="row">
         <div class="input-field col">
           <i class="material-icons prefix ">loyalty</i>
-          <input type="text" id="brand" class="validate" name="maker"/>
+          <input type="text" id="brand" class="validate" name="brand" #brand="ngModel" [(ngModel)]="produModel.brand"/>
           <label for="brand ">Brand</label>
         </div>
       </div> 
+      <!-- maker -->
+      <div class="row">
+        <div class="input-field col">
+          <i class="material-icons prefix ">Maker</i>
+          <input type="text" id="brand" class="validate" name="maker" #maker="ngModel" [(ngModel)]="produModel.maker"/>
+          <label for="brand ">Brand</label>
+        </div>
+      </div> 
+      <!-- img -->
+      <div class="row">
+        <div class="input-field col">
+          <i class="material-icons prefix ">Image</i>
+          <input type="text" id="brand" class="validate" name="img" #img="ngModel" [(ngModel)]="produModel.img"/>
+          <label for="brand ">Brand</label>
+        </div>
+      </div>
       <!-- category -->
       <div class="row">
         <div class="col s12">
@@ -39,53 +56,18 @@
             <span for="cat" class="pl-3 align-top">Category :</span>
           <div class="input-field col-12 ">
             <div class="form-group ">
-                <select class="form-control mb-3 purple lighten-3 grey-dark-text" id="cat" name="category">
+                <select class="form-control mb-3 purple lighten-3 grey-dark-text" #category id="cat" name="category" [(ngModel)]="produModel.category">
                 <option value="" disabled >Choose Category</option>
-                <option *ngFor="let cat of categories">{{cat.name}}</option>
+                <option *ngFor="let categ of categories">{{categ.name}}</option>
                 </select>
             </div>
           </div>
         </div>
-        <!-- select from materalize -->
-<!--           <div class="input-field col">
-            <i class="material-icons prefix ">list</i>
-
-            <select id="cat">
-              <option value="" disabled selected>Choose Category</option>
-              <option value="1">Option 1</option>
-              <option value="2">Option 2</option>
-              <option value="3">Option 3</option>
-            </select>
-            <label for="cat">category</label>
-          </div>
-           -->
-       
-      </div>
-      <!-- img -->
-      <div class="row">
-        <div class="input-field col">
-          <i class="material-icons prefix ">perm_media</i>
-          <input type="text" id="img" class="validate" name="img"/>
-          <label for="img ">Photo</label>
-        </div>
-      </div>
-<!--       <form action="#"> 
-        <div class="file-field input-field">
-          <div class="btn">
-            <span>File</span>
-            <input type="file">
-          </div>
-          <div class="file-path-wrapper">
-            <input class="file-path validate" type="text">
-          </div>
-        </div>
-      </form> -->
-
-
-      <button class="waves-effect waves-dark btn purple lighten-1 mb-4 " type="submit" name="action">Submit
+    </div>
+      <button class="waves-effect waves-dark btn purple lighten-1 mb-4 " type="submit" name="action" [disabled]="productForm.form.invalid">Submit -->
         <i class="material-icons right">send</i>
       </button>
-    </form>
-    
-     
-  </div>
+</form>
+
+
+

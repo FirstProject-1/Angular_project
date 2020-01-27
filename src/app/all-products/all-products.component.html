@@ -8,10 +8,10 @@
     
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-3" *ngFor="let product of products">
+            <div class="col-sm-12 col-md-6 col-lg-3" (click)="OnSelect(product)" *ngFor="let product of products">
                 <div class="card hoverable">
                   <div class="card-image">
-                    <img src="https://cms.souqcdn.com/sanfronto/eg/2018/Web/LPs/appliances-lp/appliances-en_06.jpg" >
+                    <img src="https://cms.souqcdn.com/sanfronto/eg/2018/Web/LPs/appliances-lp/appliances-en_06.jpg">
                     <a class="btn-floating  halfway-fab btn-small waves-effect waves-dark deep-purple lighten-1 "><i class="material-icons">favorite_border</i></a>
                     <a class=" btn-floating halfway-fab btn-small waves-effect waves-dark deep-purple lighten-1" style="right:70px;"><i class="material-icons">shopping_cart</i></a>
                   </div>

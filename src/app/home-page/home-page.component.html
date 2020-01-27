@@ -1,21 +1,41 @@
 <br><br><br>
 <div class="row">
-    <div class="col-sm-3">
+    <div id="demo" class="carousel slide" data-ride="carousel">
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="https://www.marketchino.com/media/wysiwyg/porto/homepage/slider/04/stor2.jpg">
+          </div>
+          <div class="carousel-item">
+            <img src="https://www.marketchino.com/media/wysiwyg/porto/homepage/slider/04/stor1.jpg">
+          </div>
+        </div>
+      
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+      
+      </div>
+      
+    <div class="col-sm-12 col-md-3 col-lg-3">
     <div style="width: 83%;margin: auto;border: 1px #ccc2c2 solid;padding-bottom: 13px;" >
-        <div class="list-group" class="container" *ngFor="let cat of categories" style=" margin-top: 10px;">
+        <div class="list-group" class="container" *ngFor="let category of categories" style=" margin-top: 10px;">
             <a  class="list-group-item list-group-item-action list-group-item-info" style="background-color:
             darkkhaki;">
-                <span class="">{{cat.name}}</span>
+                <span class="">{{category.name}}</span>
             </a>
         </div> 
     </div>
-
     </div>
     
-    <div class="col-sm-9">
+    <div class="col-sm-12 col-md-9 col-lg-9">
        
             <app-all-products></app-all-products>
     
     </div>
    
-</div>
+</div> -->

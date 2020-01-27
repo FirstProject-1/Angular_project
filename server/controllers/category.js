@@ -2,12 +2,12 @@ var express = require("express")
 var route = express.Router()
 var app = express()
 var bodyParser = require("body-parser")
-
 var mongoose = require("mongoose")
 
 app.use(bodyParser.urlencoded({ extended: true }));
 var middlewareBodyParser = bodyParser.json();
 
+// add Category
 route.post("/add", middlewareBodyParser, function (req, resp) {
     
     var categoryModel = mongoose.model("category")
