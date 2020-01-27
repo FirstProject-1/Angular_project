@@ -10,16 +10,11 @@ import { CategoryService } from '../services/category/category.service';
 })
 export class HomePageComponent implements OnInit {
   public categories=[]
-  productModel=[]
 
-  constructor(private prodServe:ProductService,private catService:CategoryService) { }
+  constructor(private catService:CategoryService) { }
   
   ngOnInit() {
-    this.prodServe.getAllProduct().subscribe(data=>
-      {
-        this.productModel=data;
-      })
-
+    
       this.catService.listCategory().subscribe(data=>this.categories=data)
   
 

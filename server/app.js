@@ -7,7 +7,12 @@ var mongoose=require("mongoose");
 var fs=require('fs')
 var categoryController= require("./controllers/category")
 var ProductController = require("./controllers/product")
+<<<<<<< HEAD
 var wishListController = require("./controllers/wish-list")
+=======
+var paymentControlle = require("./controllers/payment")
+var CartController = require("./controllers/cart")
+>>>>>>> 37ca15663bf05b8b79cbc64bb28b84899353a1b5
 
 
 //create my server
@@ -16,17 +21,20 @@ mongoose.connect("mongodb://127.0.0.1:27017/Masn_DB");
 
 //middlewareBodyParser
 var router = express.Router();
-const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: true }));
-var middlewareBodyParser = bodyParser.json();
+
 
 // cross origin 
 app.all('*',function (req, resp, next) {
   resp.setHeader("Access-Control-Allow-Origin", "*");
   resp.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE");
-  resp.setHeader("Access-Control-Allow-Headers","Content-Type")
+  resp.setHeader("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept")
   next()
 })
+
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
 //use my middelwares
 app.use(express.static("public"))
 
@@ -49,6 +57,12 @@ app.use('/admin',adminloginController)
 
 //midelware for user
 app.use('/user',userController)
+//midelware for payment
+app.use('/payment',paymentControlle)
+
+//midelware for cart
+app.use('/cart',CartController)
+
 
 //middleware for wish list 
 app.use('/wishlist',wishListController)

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'servises/product.service';
 import { Router } from '@angular/router';
+import { CartServiceService } from '../services/cart/cart-service.service';
 
 @Component({
   selector: 'app-all-products',
@@ -8,10 +9,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./all-products.component.css']
 })
 export class AllProductsComponent implements OnInit {
-  public products=[{name:"pro name 1"},{name:'pro name 2'},{name:'pro name 3'},{name:'pro name 4'},{name:'pro name 5'},{name:'pro name 6'}]
-  constructor( private prodServe:ProductService , private route:Router) { }
+  productModel=[]
+
+  constructor(private prodServe:ProductService,private cartService:CartServiceService,private route:Router) { }
 
   ngOnInit() {
+    this.prodServe.getAllProduct().subscribe(data=>{this.productModel=data;})
+  }
+
+  public addToCart(product_id,product_price){
+    console.log(product_id)
+    this.cartService.cartProducting(product_id,product_price).subscribe(
+      response => console.log('add to cart', response),
+      error => console.log('error',error)
+      )
   }
   public productDetails(_id){
     console.log(_id)

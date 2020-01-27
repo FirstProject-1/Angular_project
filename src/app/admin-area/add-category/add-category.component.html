@@ -1,21 +1,20 @@
 <div class="row amber lighten-3">
 <form #catForm="ngForm" novalidate method="POST" (ngSubmit)="onSubmit()"class="col mt-4">
-  {{catModel.catName}}
   <div class="row">
     <div class="input-field col">
       <i class="material-icons prefix ">mode_edit</i>
-      <input type="text" id="catName" name="catName" class="validate" required [class.is-invalid]="name.invalid &&name.touched" #name="ngModel" [(ngModel)]="catModel.catName"/>
-      <label for="name ">Category Name</label>
+      <input type="text" id="catName" name="catName" class="validate" required #catName="ngModel" [(ngModel)]="catModel.catName" [class.is-invalid]="catName.invalid && catName.touched"/>
+      <label for="name">Category Name</label>
     </div>
   </div>
   <div class="row">
     <div class="input-field col s6">
       <i class="material-icons prefix ">description</i>
-      <input type="text" id="catDes" class="validate" name="catDescription" [class.is-invalid]="name.invalid && name.touched" #name="ngModel" [(ngModel)]="catModel.catDescription">
-      <label for="des">description</label>
+      <input type="text" class="validate" name="catDescription" #catDescription="ngModel" [(ngModel)]="catModel.catDescription" [class.is-invalid]="catDescription.invalid && catDescription.touched">
+      <label for="catDescription">description</label>
     </div>
   </div>
-  <button class="waves-effect waves-dark btn amber darken-4 mb-4 " type="submit" [disabled]="catForm.form.invalid">Submit
+  <button class="waves-effect waves-dark btn amber darken-4 mb-4 " type="submit" [disabled]="catForm.form.invalid" name="action">Submit
     <i class="material-icons right">send</i>
   </button>
 </form>
