@@ -7,12 +7,19 @@ import { CartServiceService } from '../services/cart/cart-service.service';
   styleUrls: ['./cart-page.component.css']
 })
 export class CartPageComponent implements OnInit {
-  productsInCart=[]
-  constructor(private cartService:CartServiceService){ }
+  public productsInCart=[]
+  public cartInfo=[];
+  constructor(private cartService:CartServiceService){}
 
   ngOnInit() {
-    this.cartService.cartDetails().subscribe(data=>{this.productsInCart=data;console.log(data)})
-    
+    this.cartService.cartProductsDetails().subscribe(data=>{
+      this.productsInCart=data.products;
+      this.cartInfo=data;
+      console.log(data)
+    });
   }
-
+   clearAllOfTheCart(){
+    this.cartService.clearCart().subscribe(data=>console.log("you've cleared your cart"))
+  }
+ 
 }

@@ -7,6 +7,7 @@ var mongoose=require("mongoose");
 var fs=require('fs')
 var categoryController= require("./controllers/category")
 var ProductController = require("./controllers/product")
+var paymentControlle = require("./controllers/payment")
 var CartController = require("./controllers/cart")
 
 
@@ -16,7 +17,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/Masn_DB");
 
 //middlewareBodyParser
 var router = express.Router();
-const bodyParser = require('body-parser');
+
 
 // cross origin 
 app.all('*',function (req, resp, next) {
@@ -26,7 +27,9 @@ app.all('*',function (req, resp, next) {
   next()
 })
 
+const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
+
 
 //use my middelwares
 app.use(express.static("public"))
@@ -50,6 +53,8 @@ app.use('/admin',adminloginController)
 
 //midelware for user
 app.use('/user',userController)
+//midelware for payment
+app.use('/payment',paymentControlle)
 
 //midelware for cart
 app.use('/cart',CartController)

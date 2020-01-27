@@ -1,0 +1,29 @@
+
+<div class="container mx-auto" style="margin-top: 100px;">
+    <div class="form">
+      <form #clientForm="ngForm" method="POST" novalidate (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="input-field col">
+              <i class="material-icons prefix ">mode_edit</i>
+              <input type="text" class="validate" name="card"  required [class.is-invalid]="number.invalid &&number.touched"
+              #number="ngModel" [(ngModel)]="cardModel.card" class="form-control" />
+              <label for="name">Credit Card Number</label>
+            </div>
+          </div> 
+          <div class="row">
+            <div class="input-field col">
+              <i class="material-icons prefix ">mode_edit</i>
+              <input type="text" class="validate" name="verification"  required [class.is-invalid]="card.invalid &&card.touched"
+              #card="ngModel" [(ngModel)]="cardModel.verification" class="form-control" />
+              <label for="name">Card Verification Number</label>
+            </div>
+          </div>   
+          <div class="row">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                <i class="material-icons right">send</i>
+            </button>
+          </div>
+        </form>
+    </div>  
+</div>
+
