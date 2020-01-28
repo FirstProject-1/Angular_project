@@ -25,6 +25,7 @@ import { ProductsManagementComponent } from './admin-area/products-management/pr
 import { CategoryManagmentComponent } from './admin-area/category-managment/category-managment.component';
 import { SliderComponent } from './slider/slider.component';
 import { PaymentComponent } from './payment/payment.component';
+import { CartServiceService } from './services/cart/cart-service.service';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,7 @@ import { PaymentComponent } from './payment/payment.component';
     FormsModule
   ]
   ,
-  providers: [ProductService,CategoryService],
+  providers: [ProductService,CategoryService,CartServiceService],
   
   bootstrap: [AppComponent]
 })

@@ -3,7 +3,7 @@
         <div class="row">
             <div class="input-field col">
               <i class="material-icons prefix ">mode_edit</i>
-              <input type="text" class="validate" name="name"  required [class.is-invalid]="name.invalid &&name.touched"
+              <input type="text" class="validate" name="name" required [class.is-invalid]="name.invalid &&name.touched"
               #name="ngModel" [(ngModel)]="produModel.name"/>
               <label for="name">Product Name</label>
             </div>
