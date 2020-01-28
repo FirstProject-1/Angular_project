@@ -11,22 +11,24 @@ import { Product } from 'servises/product';
 })
 export class EachCategoryComponent implements OnInit {
   public category_id;
-  public categoryProducts=new Product("","","","","","","");
-  
+  public categoryProducts;
+ 
   constructor(private catService:CategoryService,private routeA:ActivatedRoute ) { }
-
+   
   ngOnInit() {
     this.routeA.paramMap.subscribe((param:ParamMap)=>{
       this.category_id=param.get("id")
     })
-    console.log(this.category_id+"...");
+    // console.log(this.category_id+"...");
     
-    console.log(this.categoryProducts)
+    // console.log(this.categoryProducts)
 
     this.catService.CategoryProducts(this.category_id).subscribe(data=>
-      {this.categoryProducts=data 
-      console.log(data)}
-
+      {
+        // console.log(typeof(data));
+        this.categoryProducts=data;
+    
+    }
     )
   }
 

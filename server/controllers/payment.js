@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
     },(function(err,data){
       
       if(data.length == 0){
-        resp.json("correct data ")
+        resp.json("nooo")
       }else{
         resp.json("done")
        

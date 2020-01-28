@@ -6,13 +6,14 @@
     </div>
     
     <div class="container-fluid">
+      
       <div class="row" >
-        <div class="col-sm-12 col-md-6 col-lg-3" *ngFor="let product of productModel">
+        <div class="col-sm-12 col-md-6 col-lg-3"  (click)="OnSelect(product)"  *ngFor="let product of productModel">
           <div class="card hoverable">
             <div class="card-image">
               <img src="{{product.img}}" >
               <a class="btn-floating halfway-fab btn-small waves-effect waves-dark deep-purple lighten-1"><i class="material-icons">favorite_border</i></a>
-              <a (click)="addToCart(product._id,product.price)" class="btn-floating halfway-fab btn-small waves-effect waves-dark deep-purple lighten-1" style="right:70px;" name="productId"><i class="material-icons" value="product._id">shopping_cart</i></a>
+              <a (click)="addToCart(product._id,product.price)" class="btn-floating halfway-fab btn-small waves-effect waves-dark deep-purple lighten-1" style="right:70px;" name="productId"><i class="material-icons">shopping_cart</i></a>
             </div>
             
             <div>

@@ -55,11 +55,5 @@ router.put('/updateProduct/:_id',function(req,resp){
     mongoose.model('products').update()
 })
 
-  // select specific product by id -sals-
-router.get('/productDetails/:id',function(req,resp){
-    mongoose.model('products').findOne({_id:req.params.id},function(err,data){
-        resp.json(data)
-    })
-})
 
 module.exports=router;

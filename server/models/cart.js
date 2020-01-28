@@ -4,11 +4,7 @@ var cart=new Schema({
     note:String,
     totalPrice:Number,
     totalQuantity:Number
-    ,products:[{
-        type : mongoose.Schema.Types.ObjectId,
-        ref : "products"
-      }],
-    // user:[]
+    ,products:Array
 })
 // ORM
 mongoose.model("cart",cart)

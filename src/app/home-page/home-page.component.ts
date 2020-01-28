@@ -23,6 +23,6 @@ export class HomePageComponent implements OnInit {
 public CategoryProducts(CategoryProducts){
   this.route.navigate(["/each",CategoryProducts._id])
 
-  // this.catService.CategoryProducts(CategoryProducts_id).subscribe(data=>{this.products=data;console.log(data)})
+ 
 }
 }

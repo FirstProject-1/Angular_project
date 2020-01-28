@@ -52,6 +52,7 @@ route.get('/categoryProducts/:id',function(req,resp){
         var selectedCateg=data.catName
         mongoose.model('products').find({categorey:selectedCateg},function(err,data){
             resp.json(data)
+            console.log(data)
         })
         if(err) console.log(err)
     })

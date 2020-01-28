@@ -10,7 +10,7 @@ import { UsersignupService } from './usersignup.service';
 export class SignupComponent implements OnInit {
   topicHasErr=false;
   constructor( private user:UsersignupService) { }
-  userModel=new Signup('','','','')
+  public userModel=new Signup('','','','')
   ValidateTopic(topicValue)
   {
    if(topicValue==='default')
@@ -25,7 +25,6 @@ export class SignupComponent implements OnInit {
   ngOnInit() {
   }
   
-
 
   onSubmit(){
     console.log(this.userModel)

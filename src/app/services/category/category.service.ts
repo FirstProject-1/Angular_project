@@ -28,6 +28,6 @@ export class CategoryService {
   //show products in each category
   CategoryProducts(category_id):Observable<any>{
     console.log(".."+category_id);
-    return this.http.get("http//loclhost:8080/Category/categoryProducts/"+category_id)
+    return this.http.get("http://localhost:8080/Category/categoryProducts/"+category_id)
   }
 }

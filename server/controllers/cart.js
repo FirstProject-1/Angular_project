@@ -9,12 +9,14 @@ var middlewareBodyParser = bodyParser.json();
 
 // create cart and add products to it
 route.get("/add/:id/:price",function(req,resp,next){
-    productPrice=parseInt(req.params.price)
-    var productAddedToCart={
-        _id:req.params.id,
-        price:productPrice
+    productId=req.params.id
+    productPrice=parseInt(req.params.price);
+    const productAddedToCart = {
+        price:productPrice,
+        // name:req.params.name,
+        quantity: 1,
+        _id:productId
     }
-   console.log(req.params.price)
     mongoose.model('cart').findOne((err,cart)=>{
         if (!cart){
             var cartModel = mongoose.model("cart")
@@ -22,27 +24,35 @@ route.get("/add/:id/:price",function(req,resp,next){
             cart.products=[productAddedToCart]
             cart.totalPrice=productPrice
             cart.totalQuantity=1;
-            // console.log(cart._id)
             cart.save(function(err,data){
-            resp.json(data);
+            resp.send(data);
             console.log(data);
             })
         
-        }
-        if(cart){
+        }else{
             var indexOfProduct=-1;
             for (let i=0; i<cart.products.length; i++){
-                if(req.params.id==cart.products[i]){
+                if(req.params.id===cart.products[i]._id){
                     indexOfProduct=i;
-                    console.log("yes you have added this to cart");
+                    console.log("you have added this to cart already");
                     break;
                 }
             }
             if(indexOfProduct>=0){
-                console.log("this product is in your cart ... need to update it")
+                console.log("this product is in your cart , need to update "+indexOfProduct)
+                cart.products[indexOfProduct].quantity+=1
+                // console.log(cart.products[indexOfProduct].quantity)
+                cart.products[indexOfProduct].price=cart.products[indexOfProduct].price +productPrice;
+                cart.totalQuantity=cart.totalQuantity +1;
+                cart.totalPrice= cart.totalPrice + productPrice
+                mongoose.model('cart').updateOne({_id:cart._id},{$set: cart},(err,data)=>{
+                    if(err){console.log(err)}
+                        console.log(data)
+                        console.log(cart)
+                   
+                })
                 
-            }
-            else{
+            }else{
                 console.log("no this isn'i't in your cart lets add it")
                 cart.totalQuantity=cart.totalQuantity +1;
                 cart.totalPrice= cart.totalPrice + productPrice
@@ -63,21 +73,50 @@ route.get("/add/:id/:price",function(req,resp,next){
 
 
 //////// show all products in cart
-route.get('/details', function (req, resp) {
+route.get('/details', async function (req, resp) {
     // show all products in last cart in cats collection
-    /* mongoose.model("cart").find().limit(1).sort({$natural:-1}).populate('products').exec(function (err,data){
-        console.log(data[0].products)
-        resp.send(data[0].products)
+    /* mongoose.model("cart").find().limit(1).sort({$natural:-1}).populate('products').exec(async function (err,data){
+        try{ 
+           await resp.send(data[0].products)
+           console.log(data[0].products)
+        } catch(err){
+            console.log(err)
+        }
+        
     }) */
     // show all products in first cart in carts collection
-    mongoose.model("cart").findOne().populate('products').exec(function (err,data){
-        console.log(data.products)
-        resp.send(data.products)
+     mongoose.model("cart").findOne(async function (err,data){
+        try{
+            await resp.send(data)
+            console.log(data)
+        }catch(err){
+            console.log(err)
+        }
     })
       
 })
 
-route.get('/clear/:id',function(req, resp){
+// route error
+/* route.get('/deleteItem/:id', function (req, resp) {
+    mongoose.model("cart").products.dropIndeax({_id:req.params.id},(err,data)=>{
+    console.log(req.params.id);
+    console.log(data);
+    resp.send(data)
+    })
+
+    // resp.end()
+}) */
+
+route.get('/clear',function(req, resp){
+
+    mongoose.model("cart").deleteMany((err,data)=>console.log(data))
+    resp.end()
+        
+})
+
+// mongoose.model("cart").products.dropIndeax({_id:req.params.id})
+
+/* route.get('/clear/:id',function(req, resp){
     mongoose.model("cart").findOne().populate('products').exec(function (err,data){
         data.products.forEach(element => {
             console.log(element)
@@ -91,18 +130,6 @@ route.get('/clear/:id',function(req, resp){
     })
     resp.end()
         
-})
-
-
-// price sum
-/* mongoose.model("cart").findOne().populate('products').exec(function (err,data){
-    // console.log(data.products.length)
-    var totalPrice=0;
-    for (let i=0;i<=data.products.length;i++){
-        var price=data.products[i].price
-         console.log(data.products[i].price)
-    }
-    // var price=data.products[1].price
-    resp.end()
 }) */
+
 module.exports = route;

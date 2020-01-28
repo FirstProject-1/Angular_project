@@ -13,11 +13,18 @@ export class CartServiceService {
 
   cartProducting(prductId,productPrice):Observable<any>{
     console.log(prductId)
-    return this.http.get<any>('http://localhost:8080/cart/add/'+prductId+'/'+productPrice)
+    return this.http.get('http://localhost:8080/cart/add/'+prductId+'/'+productPrice)
   }
 
-  cartDetails():Observable<any>{
+  cartProductsDetails():Observable<any>{
     return this.http.get('http://localhost:8080/cart/details')
   }
   
+  /* cartDetails():Observable<any>{
+    return this.http.get('http://localhost:8080/cart/detailsCart')
+  } */
+  clearCart():Observable<any>{
+    return this.http.get<any>('http://localhost:8080/cart/clear')
+    
+  }
 }
