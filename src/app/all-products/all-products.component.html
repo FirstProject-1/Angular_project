@@ -12,12 +12,12 @@
             <div class="card-image">
               <img src="{{product.img}}" >
               <a class="btn-floating halfway-fab btn-small waves-effect waves-dark deep-purple lighten-1"><i class="material-icons">favorite_border</i></a>
-              <a (click)="addToCart(product._id,product.price)" class="btn-floating halfway-fab btn-small waves-effect waves-dark deep-purple lighten-1" style="right:70px;" name="productId"><i class="material-icons">shopping_cart</i></a>
+              <a (click)="addToCart(product._id,product.price,product.name,product.img)" class="btn-floating halfway-fab btn-small waves-effect waves-dark deep-purple lighten-1" style="right:70px;" name="productId"><i class="material-icons">shopping_cart</i></a>
             </div>
             
             <div>
               <div class="card-content">
-                <h5 class="deep-purple-text">{{product.name}}</h5>
+                <span class="deep-purple-text" style="font-size: 16px;">{{product.name}}</span>
               </div>
             </div>
       
