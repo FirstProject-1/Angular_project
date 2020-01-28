@@ -6,8 +6,9 @@
     </div>
     
     <div class="container-fluid">
+      
       <div class="row" >
-        <div class="col-sm-12 col-md-6 col-lg-3" *ngFor="let product of productModel">
+        <div class="col-sm-12 col-md-6 col-lg-3"  (click)="OnSelect(product)"  *ngFor="let product of productModel">
           <div class="card hoverable">
             <div class="card-image">
               <img src="{{product.img}}" >

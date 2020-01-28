@@ -8,8 +8,8 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { AdminAreaComponent } from './admin-area/admin-area.component';
 import { CategoryManagmentComponent } from './admin-area/category-managment/category-managment.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 import { PaymentComponent } from './payment/payment.component'
-import { AllProductsComponent } from './all-products/all-products.component';
 import { EachCategoryComponent } from './each-category/each-category.component';
 
 
@@ -19,16 +19,12 @@ const routes: Routes = [
   {path:"home",component:HomePageComponent},
   {path:"login",component:LoginComponent},
   {path:"signup",component:SignupComponent},
-  {path:"addCart",component:CartPageComponent
-  // children:[
-  //   {path:"payment",component:PaymentComponent},
-  // ]
-  },
+  {path:"addCart",component:CartPageComponent},
   {path:"payment",component:PaymentComponent},
   {path:"wishList",component:WishListPageComponent},
   {path:"manageCategory",component:CategoryManagmentComponent},
   {path:"manageProduct",component:AdminAreaComponent},
-  
+  { path:"productDetails/:id",component:ProductDetailsComponent},
   {path:'each',component:EachCategoryComponent},
   {path:"**",component:NoPageFoundComponent}
   
