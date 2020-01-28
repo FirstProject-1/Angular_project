@@ -26,6 +26,9 @@ import { CategoryManagmentComponent } from './admin-area/category-managment/cate
 import { SliderComponent } from './slider/slider.component';
 import { CartServiceService } from './services/cart/cart-service.service';
 import { PaymentComponent } from './payment/payment.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import { WishlistService } from 'servises/wishlist.service';
+//import { Wishlist2Component } from './wishlist2/wishlist2.component';
 
 @NgModule({
   declarations: [
@@ -54,10 +57,11 @@ import { PaymentComponent } from './payment/payment.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
   ,
-  providers: [ProductService,CategoryService,CartServiceService],
+  providers: [ProductService,CategoryService,CartServiceService,WishlistService],
   
   bootstrap: [AppComponent]
 })

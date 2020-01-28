@@ -1,24 +1,27 @@
-//first nav
-
-
-<br><br><br><br>
-<div  style="width: 81%; margin: 0 auto;border: 1px #eae0e0 solid;" >
-<div class="row"style="height: 57px;">
-  <div class="col-sm-4"><br><span style="margin-left: 37px;">you have(3)  proudct in shoppin carts</span></div>
-  <div class="col-sm-8"><br><span style="margin-left: 507px;">
-    <button type="button" class="btn btn-secondary">clear shopping cart</button> </span></div>
-</div><hr>
-<div class="list-group" class="container"  *ngFor="let order of orders" style=" margin-top: 10px;">
+<div style="width: 98%; margin: 0 auto;border: 1px #eae0e0 solid;    margin-top: 110px;padding-bottom: 19px;">
+  <div class="row" style="height: 57px;">
+    <div class="col-sm-4 col-lg-4 col-md-4">
+      <br /><span style="    margin-left: 2px;">you have (3) proudct in wishlist</span>
+    </div>
+    <div class="col-sm-8 col-lg-8 col-md-8">
+      <button type="button" class="btn btn-secondary" style="    margin-top: 12px;
+    float: right;">
+        clear wishlist
+      </button>
+    </div>
+  </div>
+  <hr />
   
-    <a  class="list-group-item list-group-item-action list-group-item-info">
+  <div class="list-group" style=" width: 95%;margin: auto;" class="col-sm-12 col-md-12 col-lg-12" *ngFor="let i of productDetails">
+    <a class="list-group-item list-group-item-action list-group-item-info">
+      
       <div class="row">
-        <div class="col-sm-2">{{order.id +" -- "}}</div>
-        <div class="col-sm-3">proudct</div>
-        <div class="col-sm-5">quintity</div>
-        <div class="col-sm-2">totalPriced{{" "+order.time}}</div>
+        <div class="col-sm-2">{{i.name }}</div>
+        <div class="col-sm-3">{{i.price}}</div>
+        <div class="col-sm-5">{{i.brand }}</div>
+        <div class="col-sm-2"></div>
       </div>
-        <!-- <h5>{{order.id +" -- "}}{{" "+order.time}}</h5> -->
+      
     </a>
+  </div>
 </div>
-</div>
-
