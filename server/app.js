@@ -59,8 +59,6 @@ app.use('/payment',paymentControlle)
 //midelware for cart
 app.use('/cart',CartController)
 
-
-
 //listen 
 app.listen(8080,function(){
     console.log("server on port 8080 ");

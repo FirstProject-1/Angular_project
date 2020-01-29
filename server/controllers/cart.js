@@ -8,14 +8,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 var middlewareBodyParser = bodyParser.json();
 
 // create cart and add products to it
-route.get("/add/:id/:price",function(req,resp,next){
+route.get("/add/:id/:price/:name",function(req,resp,next){
     productId=req.params.id
     productPrice=parseInt(req.params.price);
+    console.log(req.query.img);
+    
     const productAddedToCart = {
         price:productPrice,
-        // name:req.params.name,
+        name:req.params.name.toString(),
         quantity: 1,
-        _id:productId
+        _id:productId,
+        img:req.query.img.toString()
     }
     mongoose.model('cart').findOne((err,cart)=>{
         if (!cart){
@@ -37,14 +40,14 @@ route.get("/add/:id/:price",function(req,resp,next){
                     console.log("you have added this to cart already");
                     break;
                 }
-            }
+                }
             if(indexOfProduct>=0){
                 console.log("this product is in your cart , need to update "+indexOfProduct)
                 cart.products[indexOfProduct].quantity+=1
                 // console.log(cart.products[indexOfProduct].quantity)
-                cart.products[indexOfProduct].price=cart.products[indexOfProduct].price +productPrice;
-                cart.totalQuantity=cart.totalQuantity +1;
-                cart.totalPrice= cart.totalPrice + productPrice
+                cart.products[indexOfProduct].price+=productPrice;
+                cart.totalQuantity+=1;
+                cart.totalPrice+=productPrice
                 mongoose.model('cart').updateOne({_id:cart._id},{$set: cart},(err,data)=>{
                     if(err){console.log(err)}
                         console.log(data)
@@ -96,16 +99,13 @@ route.get('/details', async function (req, resp) {
       
 })
 
-// route error
-/* route.get('/deleteItem/:id', function (req, resp) {
-    mongoose.model("cart").products.dropIndeax({_id:req.params.id},(err,data)=>{
-    console.log(req.params.id);
-    console.log(data);
-    resp.send(data)
-    })
+// delete specific product in cart
+route.get('/deleteItem/:id', function (req, resp) {
+    mongoose.model('cart').update({},{ $pull:{ products :{_id:req.params.id} } },()=>console.log("deleted"+req.params.id)
+    )
 
-    // resp.end()
-}) */
+    resp.end()
+})
 
 route.get('/clear',function(req, resp){
 
@@ -113,6 +113,9 @@ route.get('/clear',function(req, resp){
     resp.end()
         
 })
+
+// make products of quantity -1
+//    mongoose.model('cart').update({},{ $inc: { "products.$[].quantity" : -1 } })
 
 // mongoose.model("cart").products.dropIndeax({_id:req.params.id})
 
