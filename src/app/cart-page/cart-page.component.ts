@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartServiceService } from '../services/cart/cart-service.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { ParamMap, ActivatedRoute } from '@angular/router';
 import { ProductService } from 'servises/product.service';
 
@@ -11,25 +13,20 @@ import { ProductService } from 'servises/product.service';
 export class CartPageComponent implements OnInit {
   public productsInCart=[]
   public cartInfo=[];
+  constructor(private cartService:CartServiceService, private route:Router,private param:ActivatedRoute,private proudServ:ProductService){}
   public product_id;
   public product={}
-  constructor(private cartService:CartServiceService, private param:ActivatedRoute,private proudServ:ProductService){}
  
 
-  // on init
   ngOnInit() {
     
     this.cartService.cartProductsDetails().subscribe(data=>{
-      if(data.products.length!==null){
         this.productsInCart=data.products;
         this.cartInfo=data;
         console.log(data)
-      } else{
-        this.productsInCart=["there is no products here yet"]
-      }
-      
-      
-    });
+    }
+    
+    );
   }
    clearAllOfTheCart(){
     this.cartService.clearCart().subscribe(data=>console.log("you've cleared your cart"))

@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
 
     this.cartService.cartProductsDetails().subscribe(data=>{
-      if(data.products.length!==null){
+      if(data.products.length!=="null"){
         this.cartInfo=data;
         console.log(data)
       } else{

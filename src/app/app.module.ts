@@ -14,7 +14,7 @@ import { BodyComponent } from './body/body.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NoPageFoundComponent } from './no-page-found/no-page-found.component';
 import { ProductService } from 'servises/product.service';
-import{ HttpClientModule } from '@angular/common/http'; 
+import{ HttpClientModule , HTTP_INTERCEPTORS } from '@angular/common/http'; 
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginUserComponent } from './login/login-user/login-user.component';
@@ -25,6 +25,8 @@ import { ProductsManagementComponent } from './admin-area/products-management/pr
 import { CategoryManagmentComponent } from './admin-area/category-managment/category-managment.component';
 import { SliderComponent } from './slider/slider.component';
 import { PaymentComponent } from './payment/payment.component';
+import { AuthGuard } from './auth.guard';
+import { TokenInterceptorService } from './services/tokenInterceptor/token-interceptor.service';
 import {ReactiveFormsModule} from '@angular/forms';
 import { WishlistService } from 'servises/wishlist.service';
 import { CartServiceService } from './services/cart/cart-service.service';
@@ -62,7 +64,13 @@ import { CartServiceService } from './services/cart/cart-service.service';
     ReactiveFormsModule
   ]
   ,
-  providers: [ProductService,CategoryService,CartServiceService,WishlistService],
+  providers: [ProductService,CategoryService,CartServiceService,WishlistService,AuthGuard,
+    {
+    provide:HTTP_INTERCEPTORS,
+    useClass:TokenInterceptorService,
+    multi:true
+  }
+],
   
   bootstrap: [AppComponent]
 })

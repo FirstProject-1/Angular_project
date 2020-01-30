@@ -7,8 +7,27 @@ var mongoose = require("mongoose")
 app.use(bodyParser.urlencoded({ extended: true }));
 var middlewareBodyParser = bodyParser.json();
 
+
+
+function verifyToken(req,resp,next){
+    if(!req.headers.authorization){
+      return resp.status(401).send("req unauthor..")
+    }
+    let token= req.headers.authorization.split(' ')[1]
+    if (token==='null'){
+      return resp.status(401).send('req unauthor..')
+    }
+    let payload=jwt.verify(token,'secret key')
+    if (!payload){
+      return resp.status(401).send('req unauthor..')
+    }
+    req.userId= payload.subject
+    next()
+  }
 // create cart and add products to it
 route.get("/add/:id/:price/:name",function(req,resp,next){
+    // console.log(req.headers);
+    
     productId=req.params.id
     productPrice=parseInt(req.params.price);
     console.log(req.query.img);

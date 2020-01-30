@@ -23,6 +23,7 @@ export class WishListPageComponent implements OnInit {
   // clear all wishlist
   clearAllOfThewishlist(){
     this.wishlistServ.clearWishlist().subscribe(data=>console.log("you've cleared your cart"))
+    alert("clear Done..")
   }
  
   // add cart form wishist

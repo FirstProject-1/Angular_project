@@ -13,4 +13,12 @@ export class UserloginService {
   //  console.log(log)
     return this.http.post('http://localhost:8080/user/login',log);
   }
+
+  auth(){
+    return !!localStorage.getItem('tokenAuth')
+  }
+
+  getToken(){
+    return localStorage.getItem('tokenAuth')
+  }
 }
