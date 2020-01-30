@@ -7,12 +7,8 @@ var mongoose=require("mongoose");
 var fs=require('fs')
 var categoryController= require("./controllers/category")
 var ProductController = require("./controllers/product")
-<<<<<<< HEAD
-var wishListController = require("./controllers/wish-list")
-=======
 var paymentControlle = require("./controllers/payment")
 var CartController = require("./controllers/cart")
->>>>>>> 37ca15663bf05b8b79cbc64bb28b84899353a1b5
 
 
 //create my server
@@ -64,8 +60,7 @@ app.use('/payment',paymentControlle)
 app.use('/cart',CartController)
 
 
-//middleware for wish list 
-app.use('/wishlist',wishListController)
+
 
 
 //listen 

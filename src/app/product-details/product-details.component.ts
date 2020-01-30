@@ -8,7 +8,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
-  public product=[];
+  public product={};
   constructor( private prodServe:ProductService, private routeA:ActivatedRoute) { }
   public product_id;
   ngOnInit() {
