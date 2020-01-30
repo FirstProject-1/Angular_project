@@ -24,8 +24,8 @@ const routes: Routes = [
   {path:"wishList",component:WishListPageComponent},
   {path:"manageCategory",component:CategoryManagmentComponent},
   {path:"manageProduct",component:AdminAreaComponent},
+  {path:'each/:id',component:EachCategoryComponent},
   { path:"productDetails/:id",component:ProductDetailsComponent},
-  {path:'each',component:EachCategoryComponent},
   {path:"**",component:NoPageFoundComponent}
   
 ];

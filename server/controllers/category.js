@@ -47,14 +47,15 @@ route.get('/details/:id',function(req,resp){
 })
 
 //show products in each category
-route.get('/CategoryProducts/:id',function(req,resp){
+route.get('/categoryProducts/:id',function(req,resp){
     mongoose.model('category').findOne({_id:req.params.id},function(err,data){
         // resp.json(data.catName)
         var selectedCateg=data.catName
-        mongoose.model('products').findOne({categorey:selectedCateg},function(err,data){
+        mongoose.model('products').find({categorey:selectedCateg},function(err,data){
             resp.json(data)
+            console.log(data)
         })
-        if(!err) console.log(err)
+        if(err) console.log(err)
     })
 })
 module.exports = route;
