@@ -14,7 +14,7 @@ import { BodyComponent } from './body/body.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NoPageFoundComponent } from './no-page-found/no-page-found.component';
 import { ProductService } from 'servises/product.service';
-import{ HttpClientModule } from '@angular/common/http'; 
+import{ HttpClientModule , HTTP_INTERCEPTORS } from '@angular/common/http'; 
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginUserComponent } from './login/login-user/login-user.component';
@@ -26,6 +26,9 @@ import { CategoryManagmentComponent } from './admin-area/category-managment/cate
 import { SliderComponent } from './slider/slider.component';
 import { CartServiceService } from './services/cart/cart-service.service';
 import { PaymentComponent } from './payment/payment.component';
+import { AuthGuard } from './auth.guard';
+import { TokenInterceptorService } from './services/tokenInterceptor/token-interceptor.service';
+
 
 @NgModule({
   declarations: [
@@ -57,7 +60,13 @@ import { PaymentComponent } from './payment/payment.component';
     FormsModule
   ]
   ,
-  providers: [ProductService,CategoryService,CartServiceService],
+  providers: [ProductService,CategoryService,CartServiceService,AuthGuard,
+    {
+    provide:HTTP_INTERCEPTORS,
+    useClass:TokenInterceptorService,
+    multi:true
+  }
+],
   
   bootstrap: [AppComponent]
 })

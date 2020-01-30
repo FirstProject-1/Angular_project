@@ -2,12 +2,14 @@ var express =require("express");
 var mongoose=require("mongoose");
 var bodyParser=require("body-parser")
 var route=express.Router()
+
+var jwt = require('jsonwebtoken')
  var app = express();
   
 
  var middlewareBodyParser= bodyParser.json()
-/* 
- route.post("/signup",middlewareBodyParser,function(req,resp){
+
+ /* route.post("/signup",middlewareBodyParser,function(req,resp){
   var adminModel=mongoose.model("admin")
     var new_admin=new adminModel()
     new_admin.email=req.body.txtmail;
@@ -18,14 +20,14 @@ var route=express.Router()
           resp.json(data)
       }else console.log(err)
     })
-})
- */
+}) */
+/* 
  route.post("/login",middlewareBodyParser,function(req,resp){
 
-    var adminModel=mongoose.model("admin")
-    var new_admin=new adminModel()
-    new_admin.email=req.body.txtmail;
-    new_admin.password=req.body.password;
+    // var adminModel=mongoose.model("admin")
+    // var new_admin=new adminModel()
+    // new_admin.email=req.body.txtmail;
+    // new_admin.password=req.body.password;
     mongoose.model("admin").find({
       email:req.body.txtmail,
       password:req.body.password
@@ -33,14 +35,50 @@ var route=express.Router()
       
       if(data.length === 0){
         resp.json("sorry you are not allowed")
-      }else{
-        resp.json("welcome have a nice day")
+      }
+      else{
+        const payload= { subject: req.body._id}
+        const tokenAuthAdmin = jwt.sign(payload,"this is secret key")
+          if (tokenAuthAdmin === undefined)
+          {console.log("not an admin");
+          }
+          else{
+            resp.send({tokenAuthAdmin})
+          }
        
       }
     }))
         
                
+}) */
+
+route.post("/login",middlewareBodyParser,function(req,resp){
+
+
+    mongoose.model("admin").findOne({email:req.body.txtmail},(err,data)=>{
+      if(err){console.log(err);
+      }
+      else{
+        if(!data){
+          resp.status(401).send("not exist");
+       } 
+       else{ 
+         if(data.password !==req.body.password){
+           
+         resp.status(401).send("invalid password")
+         }
+         else {
+          const payload= { subject: req.body._id}
+          const tokenAuthAdmin = jwt.sign(payload,"this is secret key")
+            // resp.json("sucess");
+            resp.status(200).send({tokenAuthAdmin})
+         }
+        
+       } 
+      }
+     
+    }) 
+     
+          
 })
-
-
 module.exports=route;

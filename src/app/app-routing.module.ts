@@ -11,6 +11,8 @@ import { CategoryManagmentComponent } from './admin-area/category-managment/cate
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { PaymentComponent } from './payment/payment.component'
 import { EachCategoryComponent } from './each-category/each-category.component';
+import { AuthGuard } from './auth.guard';
+import { AuthAdminGuard } from 'src/auth-admin.guard';
 
 
 
@@ -20,10 +22,10 @@ const routes: Routes = [
   {path:"login",component:LoginComponent},
   {path:"signup",component:SignupComponent},
   {path:"addCart",component:CartPageComponent},
-  {path:"payment",component:PaymentComponent},
-  {path:"wishList",component:WishListPageComponent},
-  {path:"manageCategory",component:CategoryManagmentComponent},
-  {path:"manageProduct",component:AdminAreaComponent},
+  {path:"payment",component:PaymentComponent,canActivate:[AuthGuard]},
+  {path:"wishList",component:WishListPageComponent },
+  {path:"manageCategory",component:CategoryManagmentComponent,canActivate:[AuthAdminGuard]},
+  {path:"manageProduct",component:AdminAreaComponent,canActivate:[AuthAdminGuard]},
   { path:"productDetails/:id",component:ProductDetailsComponent},
   {path:'each',component:EachCategoryComponent},
   {path:"**",component:NoPageFoundComponent}

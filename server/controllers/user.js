@@ -2,6 +2,7 @@ var express =require("express");
 var mongoose=require("mongoose");
 var bodyParser=require("body-parser")
 var route=express.Router()
+var jwt = require('jsonwebtoken')
  var app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -18,8 +19,11 @@ route.post("/signup",middlewareBodyParser,function(req,resp){
     
     new_user.save(function(err,data){
       if(!err){
+        const payload= { subject: new_user._id}
+        const tokenAuth = jwt.sign(payload,"this is secret key")
            console.log("saved...");
-            resp.json(data)
+            // resp.json(data)
+            resp.send({tokenAuth})
         }else console.log(err)
       })
 })
@@ -30,14 +34,31 @@ route.post("/login",middlewareBodyParser,function(req,resp){
   var _user=new userModel()
   _user.email=req.body.txtmail;
   _user.password=req.body.password;
-  _user.save(function(err,data){
-      if(data.length==0){
-           resp.status(403);
-           resp.json("not exist");
-        } else{
-          resp.json("sucess");
-        } 
-      })       
+
+    mongoose.model("user").findOne({email:req.body.txtmail},(err,data)=>{
+      if(err){console.log(err);
+      }
+      else{
+        if(!data){
+          resp.send("not exist");
+       } 
+       else{ 
+         if(data.password !==req.body.password){
+         resp.send("invalid password")
+         }
+         else {
+          const payload= { subject: _user._id}
+          const tokenAuth = jwt.sign(payload,"this is secret key")
+            // resp.json("sucess");
+            resp.send({tokenAuth})
+         }
+        
+       } console.log(data);
+      }
+     
+    })
+     
+          
 })
 
 

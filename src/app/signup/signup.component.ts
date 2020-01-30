@@ -29,9 +29,11 @@ export class SignupComponent implements OnInit {
   onSubmit(){
     console.log(this.userModel)
     this.user.addUser(this.userModel).subscribe(
-      response => console.log('toooooooo db', response),
+      response =>{localStorage.setItem('token',response['tokenAuth'])}
+      ,
       error => console.log('error',error)
       )
+
   }
 
 
