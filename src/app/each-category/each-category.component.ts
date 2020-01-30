@@ -3,6 +3,7 @@ import { CategoryService } from '../services/category/category.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { categForm } from '../classes/catForm';
 import { Product } from 'servises/product';
+import { CartServiceService } from '../services/cart/cart-service.service';
 
 @Component({
   selector: 'app-each-category',
@@ -13,7 +14,7 @@ export class EachCategoryComponent implements OnInit {
   public category_id;
   public categoryProducts;
  
-  constructor(private catService:CategoryService,private routeA:ActivatedRoute ) { }
+  constructor(private catService:CategoryService,private routeA:ActivatedRoute,private cartServe:CartServiceService) { }
    
   ngOnInit() {
     this.routeA.paramMap.subscribe((param:ParamMap)=>{
@@ -31,5 +32,13 @@ export class EachCategoryComponent implements OnInit {
     }
     )
   }
+  public addToCart(product_id,product_price,product_name,product_img){
+    console.log(product_id)
+    this.cartServe.cartProducting(product_id,product_price,product_name,product_img).subscribe(
+      response => console.log('add to cart', response),
+      error => console.log('error',error)
+      )
+  }
+  
 
 }

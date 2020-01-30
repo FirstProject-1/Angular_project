@@ -16,7 +16,7 @@
                   <div class="card-image">
                     <img src="{{product.img}}" >
                     <a class="btn-floating  halfway-fab btn-small waves-effect waves-dark deep-purple lighten-1 "><i class="material-icons">favorite_border</i></a>
-                    <a class=" btn-floating halfway-fab btn-small waves-effect waves-dark deep-purple lighten-1" style="right:70px;"><i class="material-icons">shopping_cart</i></a>
+                    <a (click)="addToCart(product._id,product.price,product.name,product.img)" class=" btn-floating halfway-fab btn-small waves-effect waves-dark deep-purple lighten-1" style="right:70px;"><i class="material-icons">shopping_cart</i></a>
                   </div>
                   <div class="card-content">
                     <p class="deep-purple-text">{{product.name}}</p>

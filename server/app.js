@@ -4,10 +4,11 @@ var adminloginController = require("./controllers/admin-login")
 var userController = require("./controllers/user")
 var categoryController= require('./controllers/category')
 var wishlistController =require("./controllers/wishlist")
-var mongoose=require("mongoose");
-var fs=require('fs')
 var paymentControlle = require("./controllers/payment")
 var CartController = require("./controllers/cart")
+var mongoose=require("mongoose");
+var fs=require('fs')
+
 
 
 //create my server
