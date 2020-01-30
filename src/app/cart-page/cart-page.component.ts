@@ -13,13 +13,21 @@ export class CartPageComponent implements OnInit {
 
   ngOnInit() {
     this.cartService.cartProductsDetails().subscribe(data=>{
-      this.productsInCart=data.products;
-      this.cartInfo=data;
-      console.log(data)
+      if(data.products.length!==null){
+        this.productsInCart=data.products;
+        this.cartInfo=data;
+        console.log(data)
+      } else{
+        this.productsInCart=["there is no products here yet"]
+      }
+      
+      
     });
   }
    clearAllOfTheCart(){
     this.cartService.clearCart().subscribe(data=>console.log("you've cleared your cart"))
   }
- 
+  /* deleteThisProduct(porduct_id){
+    this.cartService.deleteProductInCart(porduct_id).subscribe(data=>console.log("you've deleted product of id"+porduct_id))
+  } */
 }

@@ -24,8 +24,8 @@ import { AllProductsComponent } from './all-products/all-products.component';
 import { ProductsManagementComponent } from './admin-area/products-management/products-management.component';
 import { CategoryManagmentComponent } from './admin-area/category-managment/category-managment.component';
 import { SliderComponent } from './slider/slider.component';
-import { CartServiceService } from './services/cart/cart-service.service';
 import { PaymentComponent } from './payment/payment.component';
+import { CartServiceService } from './services/cart/cart-service.service';
 
 @NgModule({
   declarations: [

@@ -11,12 +11,6 @@
         <li class="nav-item active">
           <a class="nav-link"  routerLink="/home" routerLinkActive="active" class="nav-link" >Home<span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item active">
-          <a class="nav-link"  routerLink="/addCart" routerLinkActive="active" class="nav-link" >Cart<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active">
-            <a class="nav-link"  routerLink="/wishList" routerLinkActive="active" class="nav-link" >Wish List<span class="sr-only">(current)</span></a>
-          </li>
        <!-- Admin manger -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
@@ -39,6 +33,16 @@
         <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" style="width: 215px;">
         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
       </form>
+      <ul class="navbar-nav my-2 my-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link"  routerLink="/addCart" routerLinkActive="active" class="nav-link" ><i class="material-icons">shopping_cart</i><span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">{{cartInfo.totalQuantity}}</li>
+        <li class="nav-item active">
+            <a class="nav-link"  routerLink="/wishList" routerLinkActive="active" class="nav-link" ><i class="material-icons">favorite_border</i><span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">9</li>
+      </ul>
     </div>
 </nav>
  

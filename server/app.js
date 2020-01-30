@@ -6,7 +6,6 @@ var categoryController= require('./controllers/category')
 var mongoose=require("mongoose");
 var fs=require('fs')
 var categoryController= require("./controllers/category")
-var ProductController = require("./controllers/product")
 var paymentControlle = require("./controllers/payment")
 var CartController = require("./controllers/cart")
 
@@ -58,10 +57,6 @@ app.use('/payment',paymentControlle)
 
 //midelware for cart
 app.use('/cart',CartController)
-
-
-
-
 
 //listen 
 app.listen(8080,function(){

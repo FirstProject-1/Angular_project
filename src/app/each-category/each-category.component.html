@@ -1,21 +1,22 @@
 <section class=" bg-light">
     <div class="container">
     <div class="row justify-content-center mb-3 pb-3">
-      <div class="col-md-12 text-center">
-        <h2 class="mb-4">Avilabale products of -categoray-</h2>
-        <p>-description of category-</p>
+      <div class="col-md-12 text-center"  >
+        <h2 class="mb-4">catName</h2>
+        <p>catDescription</p>
+        
       </div>
     </div>   		
     </div>
     
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-3"  *ngFor="let product of products">
-                <div class="card hoverable">
+            <div class="col-sm-12 col-md-6 col-lg-3"  *ngFor="let product of categoryProducts">
+                <div class="card hoverable" >
                   <div class="card-image">
-                    <img src="https://cms.souqcdn.com/sanfronto/eg/2018/Web/LPs/appliances-lp/appliances-en_06.jpg" >
+                    <img src="{{product.img}}" >
                     <a class="btn-floating  halfway-fab btn-small waves-effect waves-dark deep-purple lighten-1 "><i class="material-icons">favorite_border</i></a>
-                    <a class=" btn-floating halfway-fab btn-small waves-effect waves-dark deep-purple lighten-1" style="right:70px;"><i class="material-icons">shopping_cart</i></a>
+                    <a (click)="addToCart(product._id,product.price,product.name,product.img)" class=" btn-floating halfway-fab btn-small waves-effect waves-dark deep-purple lighten-1" style="right:70px;"><i class="material-icons">shopping_cart</i></a>
                   </div>
                   <div class="card-content">
                     <p class="deep-purple-text">{{product.name}}</p>

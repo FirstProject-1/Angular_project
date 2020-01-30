@@ -1,4 +1,4 @@
-<section class=" bg-light">
+<section class=" bg-light" style="margin-top: 100px;">
     <div class="container">
     <div class="row justify-content-center mb-3 pb-3">
       <div class="col-md-12 text-center">
@@ -13,47 +13,45 @@
             <div class="container-fluid">
                 <div class="card hoverable">
                     <div class="row">
-                        <div class="col-sm-12 col-md-6  mt-5">
+                        <div class="col-sm-12 col-md-4  mt-5">
                             <div class="card-image responsive-img">
                                 <img class="" src="{{product.img}}" >
-
                             </div>
-                         
-                            
                         </div>
-                        <div class="col-sm-12 col-md-6   mt-5">
-                            
-                            <div class=" display-3 deep-purple-text lighten-1">pro name {{product.name}} </div>
-                            <div class="card-content">
-                                <p class="pb-4  display-4">desc : {{product.description}} </p>nnnn
-                                <p class="pb-4 display-4">price : {{product.price}}</p> .... $
-                                <p class="pb-4  display-4">brand : {{product.brand}}</p>jjjjj
-                                <div class="row">
-                                <div class="col-sm-12">
-                                   
-                                <div class="display-4 ">quantity : </div></div> 
-                                      <div class="input-field col-sm-6 ">
-                                        <div class="form-group ">
-                                            <form action="" method="POST">
-                                            <select class="form-control mb-3 purple lighten-3 grey-dark-text">
-                                            <option value="" disabled >How many </option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            </select>
-                                            </form>
-                                        </div>
-                                      </div>
+                        <div class="col-sm-12 col-md-8 mt-5">
+                            <div class=" display-3 deep-purple-text lighten-1 mb-2">{{product.name}} </div>
+                            <div class="col">
+                                <p class="pb-4 display-4">description : </p>
+                                <h5 class="pl-4">{{product.desc}}</h5>
+                                <p class="pb-4 display-4">price :</p> 
+                                <h5 class="pl-4">{{product.price}} LE</h5> 
+                                <p class="pb-4  display-4">brand :</p>
+                                <h5 class="pl-4"> {{product.brand}}</h5>
+                                <!-- <div class="row">
+                                    <div class="col-sm-12">
+                                    <div class="display-4 ">quantity : </div>
+                                    </div> 
+                                    <div class="input-field col-sm-6 ">
+                                    <div class="form-group ">
+                                        <form action="" method="POST">
+                                        <select class="form-control mb-3 purple lighten-3 grey-dark-text">
+                                        <option value="" disabled >How many </option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        </select>
+                                        </form>
+                                    </div>
+                                    </div>
                                 
-                                </div>
+                                </div> -->
                             </div>
-                           
                         </div>                        
                     </div>
                     <div class="divider"></div>
                         <div class="container btn-group my-4">
-                            <div class="waves-effect waves-dark btn deep-purple lighten-1 "><span class="align-top"> add to cart </span>
+                            <div class="waves-effect waves-dark btn deep-purple lighten-1 " (click)="addToCart(product._id,product.price,product.name,product.img)"><span class="align-top"> add to cart </span>
                                 <i class="material-icons">shopping_cart</i></div>
                             <div class="waves-effect waves-dark btn deep-purple lighten-1 ml-4"> <span class="align-top">wishlist </span> <i class="material-icons">favorite_border</i></div>
                             

@@ -1,4 +1,4 @@
-  <form #productForm="ngForm" novalidate class="col mt-4" (ngSubmit)="onSubmit()"  method="POST"  >
+  <form  #productForm="ngForm" novalidate class="col amber lighten-3" (ngSubmit)="onSubmit()"  method="POST"  >
     <!-- name -->
         <div class="row">
             <div class="input-field col">
@@ -38,7 +38,7 @@
         <div class="input-field col">
           <i class="material-icons prefix ">maker</i>
           <input type="text" id="maker" class="validate" name="maker" #maker="ngModel" [(ngModel)]="produModel.maker"/>
-          <label for="brand ">Brand</label>
+          <label for="maker">Maker</label>
         </div>
       </div> 
       <!-- img -->
@@ -46,7 +46,7 @@
         <div class="input-field col">
           <i class="material-icons prefix ">image</i>
           <input type="text" id="img" class="validate" name="img" #img="ngModel" [(ngModel)]="produModel.img"/>
-          <label for="brand ">Brand</label>
+          <label for="img">Image</label>
         </div>
       </div>
       <!-- category -->
