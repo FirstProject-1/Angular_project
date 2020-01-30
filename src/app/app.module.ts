@@ -24,10 +24,13 @@ import { AllProductsComponent } from './all-products/all-products.component';
 import { ProductsManagementComponent } from './admin-area/products-management/products-management.component';
 import { CategoryManagmentComponent } from './admin-area/category-managment/category-managment.component';
 import { SliderComponent } from './slider/slider.component';
-import { CartServiceService } from './services/cart/cart-service.service';
 import { PaymentComponent } from './payment/payment.component';
 import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './services/tokenInterceptor/token-interceptor.service';
+import {ReactiveFormsModule} from '@angular/forms';
+import { WishlistService } from 'servises/wishlist.service';
+import { CartServiceService } from './services/cart/cart-service.service';
+//import { Wishlist2Component } from './wishlist2/wishlist2.component';
 
 
 @NgModule({
@@ -57,10 +60,11 @@ import { TokenInterceptorService } from './services/tokenInterceptor/token-inter
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
   ,
-  providers: [ProductService,CategoryService,CartServiceService,AuthGuard,
+  providers: [ProductService,CategoryService,CartServiceService,WishlistService,AuthGuard,
     {
     provide:HTTP_INTERCEPTORS,
     useClass:TokenInterceptorService,

@@ -25,6 +25,7 @@ export class AddProductComponent implements OnInit {
   }
   ngOnInit() {
     this.catService.listCategory().subscribe(data=>this.categories=data)
+    console.log(this.categories)
   }
 
 }

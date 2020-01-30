@@ -18,7 +18,7 @@ route.post("/add", middlewareBodyParser, function (req, resp,next) {
         if (!err){
             console.log(req.body);
              resp.json(data);
-            
+          
          }
     })
     
@@ -26,6 +26,7 @@ route.post("/add", middlewareBodyParser, function (req, resp,next) {
 
 route.get('/list',function(req,resp){
     mongoose.model('category').find(function(err,data){
+        console.log(data)
         resp.send(data);
     })
 })
@@ -46,14 +47,15 @@ route.get('/details/:id',function(req,resp){
 })
 
 //show products in each category
-route.get('/CategoryProducts/:id',function(req,resp){
+route.get('/categoryProducts/:id',function(req,resp){
     mongoose.model('category').findOne({_id:req.params.id},function(err,data){
         // resp.json(data.catName)
         var selectedCateg=data.catName
-        mongoose.model('products').findOne({categorey:selectedCateg},function(err,data){
+        mongoose.model('products').find({categorey:selectedCateg},function(err,data){
             resp.json(data)
+            console.log(data)
         })
-        if(!err) console.log(err)
+        if(err) console.log(err)
     })
 })
 module.exports = route;

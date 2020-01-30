@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CartServiceService } from '../services/cart/cart-service.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { ParamMap, ActivatedRoute } from '@angular/router';
+import { ProductService } from 'servises/product.service';
 
 @Component({
   selector: 'app-cart-page',
@@ -11,9 +13,13 @@ import { Router } from '@angular/router';
 export class CartPageComponent implements OnInit {
   public productsInCart=[]
   public cartInfo=[];
-  constructor(private cartService:CartServiceService, private route:Router){}
+  constructor(private cartService:CartServiceService, private route:Router,private param:ActivatedRoute,private proudServ:ProductService){}
+  public product_id;
+  public product={}
+ 
 
   ngOnInit() {
+    
     this.cartService.cartProductsDetails().subscribe(data=>{
         this.productsInCart=data.products;
         this.cartInfo=data;

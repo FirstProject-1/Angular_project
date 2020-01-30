@@ -34,10 +34,10 @@ route.get("/add/:id/:price/:name",function(req,resp,next){
     
     const productAddedToCart = {
         price:productPrice,
-        name:req.params.name.toString(),
+        name:req.params.name,
         quantity: 1,
         _id:productId,
-        img:req.query.img.toString()
+        img:req.query.img
     }
     mongoose.model('cart').findOne((err,cart)=>{
         if (!cart){

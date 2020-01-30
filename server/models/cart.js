@@ -6,5 +6,5 @@ var cart=new Schema({
     totalQuantity:Number
     ,products:Array
 })
-// ORM
+
 mongoose.model("cart",cart)

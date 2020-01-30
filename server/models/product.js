@@ -8,7 +8,8 @@ var products=new Schema({
     brand:String,
     macker:String,
     img:String,
-    categorey:String
+    categorey:String,
+    
     
 })
 // ORM
