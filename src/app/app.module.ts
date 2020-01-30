@@ -27,8 +27,9 @@ import { SliderComponent } from './slider/slider.component';
 import { PaymentComponent } from './payment/payment.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { WishlistService } from 'servises/wishlist.service';
-//import { Wishlist2Component } from './wishlist2/wishlist2.component';
 import { CartServiceService } from './services/cart/cart-service.service';
+//import { Wishlist2Component } from './wishlist2/wishlist2.component';
+
 
 @NgModule({
   declarations: [
