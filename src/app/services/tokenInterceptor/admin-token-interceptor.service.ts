@@ -12,7 +12,7 @@ export class AdminTokenInterceptorService implements HttpInterceptor {
     let authoService=this.injector.get(AdminService)
     let tokenizedReq= req.clone({
       setHeader:{
-        Authorization :`Bearer ${authoService.getTokenAdmin()}`
+        authorization :`Bearer ${authoService.getTokenAdmin()}`
       }
     })
     return next.handle(tokenizedReq)

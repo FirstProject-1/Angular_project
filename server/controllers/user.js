@@ -17,9 +17,9 @@ route.post("/signup",middlewareBodyParser,function(req,resp){
     new_user.email=req.body.txtmail;
     new_user.password=req.body.password;
     
-    new_user.save(function(err,data){
+    new_user.save(function(err,user){
       if(!err){
-        const payload= { subject: new_user._id}
+        const payload= { subject: user._id}
         const tokenAuth = jwt.sign(payload,"this is secret key")
            console.log("saved...");
             // resp.json(data)
@@ -47,13 +47,14 @@ route.post("/login",middlewareBodyParser,function(req,resp){
          resp.send("invalid password")
          }
          else {
-          const payload= { subject: _user._id}
+          const payload= { subject: data._id}
           const tokenAuth = jwt.sign(payload,"this is secret key")
-            // resp.json("sucess");
-            resp.send({tokenAuth})
+          console.log(payload);
+         resp.send({tokenAuth})
          }
         
-       } console.log(data);
+       } 
+      //  console.log(data);
       }
      
     })

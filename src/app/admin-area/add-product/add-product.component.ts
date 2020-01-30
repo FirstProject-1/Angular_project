@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CategoryService } from 'src/app/services/category/category.service';
 import { ProductService } from 'servises/product.service';
 import { Product } from 'servises/product';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-product',
@@ -10,7 +12,7 @@ import { Product } from 'servises/product';
 })
 export class AddProductComponent implements OnInit {
 
-  constructor(private catService:CategoryService,private prodServe:ProductService) { }
+  constructor(private catService:CategoryService,private prodServe:ProductService, private route:Router) { }
   public produModel = new Product("","","","","","","")
   public categories=[];
 

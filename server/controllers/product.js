@@ -7,8 +7,26 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 var middlewareBodyParser = bodyParser.json();
 
+function verifyToken(req,resp,next){
+    if(!req.headers.authorization){
+      return resp.status(401).send("req unauthor..")
+    }
+    let token= req.headers.authorization.split(' ')[1]
+    if (token==='null'){
+      return resp.status(401).send('req unauthor..')
+    }
+    let payload=jwt.verify(token,'secret key')
+    if (!payload){
+      return resp.status(401).send('req unauthor..')
+    }
+    req.adminId= payload.subject
+    next()
+  }
+
 // add product
 router.post("/addProduct",middlewareBodyParser,function(req,resp,next){
+    // console.log(req.headers);
+    
     var productModel = mongoose.model("products")
     var product = new productModel()
      product.name=req.body.name;

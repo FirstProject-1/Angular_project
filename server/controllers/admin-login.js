@@ -54,24 +54,24 @@ var jwt = require('jsonwebtoken')
 
 route.post("/login",middlewareBodyParser,function(req,resp){
 
-
+  
     mongoose.model("admin").findOne({email:req.body.txtmail},(err,data)=>{
       if(err){console.log(err);
       }
       else{
         if(!data){
-          resp.status(401).send("not exist");
+          resp.send("not exist");
        } 
        else{ 
          if(data.password !==req.body.password){
            
-         resp.status(401).send("invalid password")
+         resp.send("invalid password")
          }
          else {
-          const payload= { subject: req.body._id}
+          const payload= { subject: data._id}
           const tokenAuthAdmin = jwt.sign(payload,"this is secret key")
-            // resp.json("sucess");
-            resp.status(200).send({tokenAuthAdmin})
+          console.log(payload);
+          resp.send({tokenAuthAdmin})
          }
         
        } 
@@ -81,4 +81,6 @@ route.post("/login",middlewareBodyParser,function(req,resp){
      
           
 })
+
+
 module.exports=route;

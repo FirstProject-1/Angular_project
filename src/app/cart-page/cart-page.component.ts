@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartServiceService } from '../services/cart/cart-service.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart-page',
@@ -9,20 +11,16 @@ import { CartServiceService } from '../services/cart/cart-service.service';
 export class CartPageComponent implements OnInit {
   public productsInCart=[]
   public cartInfo=[];
-  constructor(private cartService:CartServiceService){}
+  constructor(private cartService:CartServiceService, private route:Router){}
 
   ngOnInit() {
     this.cartService.cartProductsDetails().subscribe(data=>{
-      if(data.products.length!==null){
         this.productsInCart=data.products;
         this.cartInfo=data;
         console.log(data)
-      } else{
-        this.productsInCart=["there is no products here yet"]
-      }
-      
-      
-    });
+    }
+    
+    );
   }
    clearAllOfTheCart(){
     this.cartService.clearCart().subscribe(data=>console.log("you've cleared your cart"))
