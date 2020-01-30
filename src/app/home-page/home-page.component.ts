@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'servises/product.service';
 import { Product } from 'servises/product';
 import { CategoryService } from '../services/category/category.service';
+import { WishlistService } from 'servises/wishlist.service';
+import { Wishlist } from 'servises/wishlist';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,14 +17,10 @@ export class HomePageComponent implements OnInit {
   constructor(private catService:CategoryService,private route:Router) { }
   
   ngOnInit() {
-    
       this.catService.listCategory().subscribe(data=>this.categories=data)
-  
+   }
 
-}
-public CategoryProducts(CategoryProducts){
-  this.route.navigate(["/each",CategoryProducts._id])
-
- 
-}
+  public CategoryProducts(CategoryProducts){
+    this.route.navigate(["/each",CategoryProducts._id])
+  }
 }

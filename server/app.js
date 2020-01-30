@@ -3,11 +3,12 @@ var ProductController = require("./controllers/product")
 var adminloginController = require("./controllers/admin-login")
 var userController = require("./controllers/user")
 var categoryController= require('./controllers/category')
-var mongoose=require("mongoose");
-var fs=require('fs')
-var categoryController= require("./controllers/category")
+var wishlistController =require("./controllers/wishlist")
 var paymentControlle = require("./controllers/payment")
 var CartController = require("./controllers/cart")
+var mongoose=require("mongoose");
+var fs=require('fs')
+
 
 
 //create my server
@@ -15,7 +16,7 @@ var app = express()
 mongoose.connect("mongodb://127.0.0.1:27017/Masn_DB");
 
 //middlewareBodyParser
-var router = express.Router();
+// var router = express.Router();
 
 
 // cross origin 
@@ -52,11 +53,17 @@ app.use('/admin',adminloginController)
 
 //midelware for user
 app.use('/user',userController)
+
 //midelware for payment
 app.use('/payment',paymentControlle)
 
 //midelware for cart
 app.use('/cart',CartController)
+
+
+//midelware for wishlist 
+app.use('/wishlist',wishlistController)
+
 
 //listen 
 app.listen(8080,function(){

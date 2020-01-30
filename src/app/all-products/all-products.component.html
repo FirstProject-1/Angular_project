@@ -12,7 +12,9 @@
           <div class="card hoverable">
             <div class="card-image">
               <img src="{{product.img}}" (click)="OnSelect(product)" >
-              <a class="btn-floating halfway-fab btn-small waves-effect waves-dark deep-purple lighten-1"><i class="material-icons">favorite_border</i></a>
+              
+              <a (click)="addWishlist(product._id,product.name,product.price,product.img)" class="btn-floating halfway-fab btn-small waves-effect waves-dark deep-purple lighten-1" name="productId"><i class="material-icons">favorite_border</i></a>
+
               <a (click)="addToCart(product._id,product.price,product.name,product.img)" class="btn-floating halfway-fab btn-small waves-effect waves-dark deep-purple lighten-1" style="right:70px;" name="productId"><i class="material-icons">shopping_cart</i></a>
             </div>
             
