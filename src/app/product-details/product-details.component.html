@@ -51,9 +51,16 @@
                     </div>
                     <div class="divider"></div>
                         <div class="container btn-group my-4">
-                            <div class="waves-effect waves-dark btn deep-purple lighten-1 "><span class="align-top"> add to cart </span>
-                                <i class="material-icons">shopping_cart</i></div>
-                            <div class="waves-effect waves-dark btn deep-purple lighten-1 ml-4"> <span class="align-top">wishlist </span> <i class="material-icons">favorite_border</i></div>
+                            <div class="waves-effect waves-dark btn deep-purple lighten-1 "
+                            (click)="addToCart(product._id,product.price,product.name,product.img)">
+                                <span class="align-top"> add to cart </span>
+                                <i class="material-icons">shopping_cart</i>
+                            </div>
+                            <div class="waves-effect waves-dark btn deep-purple lighten-1 ml-4"
+                            (click)="addWishlist(product._id,product.name,product.price,product.img)"
+                             > 
+                                <span class="align-top">  wishlist </span> 
+                                <i class="material-icons">favorite_border</i></div>
                             
                         </div>
                 </div>

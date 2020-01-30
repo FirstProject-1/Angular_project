@@ -8,6 +8,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
  var middlewareBodyParser= bodyParser.json()
 
+ // payment
  route.post("/pay",middlewareBodyParser,function(req,resp){
 
     var paymentModel=mongoose.model("payment")
@@ -20,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
     },(function(err,data){
       
       if(data.length == 0){
-        resp.json("nooo")
+        resp.json("no match")
       }else{
         resp.json("done")
        

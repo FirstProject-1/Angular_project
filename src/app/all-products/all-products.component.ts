@@ -18,22 +18,24 @@ export class AllProductsComponent implements OnInit {
     this.prodServe.getAllProduct().subscribe(data=>{this.productModel=data;})
   }
 
-  //add to cart
+  //add to cart from homepage
   public addToCart(product_id,product_price,product_name,product_img){
     console.log(product_id)
     this.cartService.cartProducting(product_id,product_price,product_name,product_img).subscribe(
       response => console.log('add to cart', response),
       error => console.log('error',error)
       )
+      alert("proudct sent")
   }
   
-  //add wishlist
+  //add wishlist from homepage
   public addWishlist(product_id,product_name,product_price,product_img){
     console.log(product_id)
     this.wishlistServe.wishlistProducs(product_id,product_name,product_price,product_img).subscribe(
       response => console.log('add to cart', response),
       error => console.log('error',error)
       )
+      alert("proudct sent")
   }
 
   public productDetails(_id){

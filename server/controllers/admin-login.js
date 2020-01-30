@@ -6,20 +6,7 @@ var route=express.Router()
   
 
  var middlewareBodyParser= bodyParser.json()
-/* 
- route.post("/signup",middlewareBodyParser,function(req,resp){
-  var adminModel=mongoose.model("admin")
-    var new_admin=new adminModel()
-    new_admin.email=req.body.txtmail;
-    new_admin.password=req.body.password;
-    new_admin.save(function(err,data){
-    if(!err){
-         console.log("saved...");
-          resp.json(data)
-      }else console.log(err)
-    })
-})
- */
+ 
  route.post("/login",middlewareBodyParser,function(req,resp){
 
     var adminModel=mongoose.model("admin")
