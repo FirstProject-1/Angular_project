@@ -6,10 +6,9 @@ var categoryController= require('./controllers/category')
 var wishlistController =require("./controllers/wishlist")
 var mongoose=require("mongoose");
 var fs=require('fs')
-
-
 var paymentControlle = require("./controllers/payment")
 var CartController = require("./controllers/cart")
+
 
 //create my server
 var app = express()
@@ -63,6 +62,7 @@ app.use('/cart',CartController)
 
 //midelware for wishlist 
 app.use('/wishlist',wishlistController)
+
 
 //listen 
 app.listen(8080,function(){

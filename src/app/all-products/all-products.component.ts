@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'servises/product.service';
 import { Router } from '@angular/router';
 import { CartServiceService } from '../services/cart/cart-service.service';
+import { WishlistService } from 'servises/wishlist.service';
 
 @Component({
   selector: 'app-all-products',
@@ -11,19 +12,30 @@ import { CartServiceService } from '../services/cart/cart-service.service';
 export class AllProductsComponent implements OnInit {
   productModel=[]
 
-  constructor(private prodServe:ProductService,private cartService:CartServiceService,private route:Router) { }
+  constructor(private prodServe:ProductService,private cartService:CartServiceService,private route:Router ,private wishlistServe:WishlistService) { }
 
   ngOnInit() {
     this.prodServe.getAllProduct().subscribe(data=>{this.productModel=data;})
   }
 
-  public addToCart(product_id,product_price){
+  //add to cart
+  public addToCart(product_id,product_price,product_name,product_img){
     console.log(product_id)
-    this.cartService.cartProducting(product_id,product_price).subscribe(
+    this.cartService.cartProducting(product_id,product_price,product_name,product_img).subscribe(
       response => console.log('add to cart', response),
       error => console.log('error',error)
       )
   }
+  
+  //add wishlist
+  public addWishlist(product_id,product_name,product_price,product_img){
+    console.log(product_id)
+    this.wishlistServe.wishlistProducs(product_id,product_name,product_price,product_img).subscribe(
+      response => console.log('add to cart', response),
+      error => console.log('error',error)
+      )
+  }
+
   public productDetails(_id){
     console.log(_id)
     this.prodServe.productDetails(_id).subscribe(

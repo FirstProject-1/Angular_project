@@ -11,15 +11,21 @@ export class WishlistService {
   constructor(private http:HttpClient) { }
 
 //add to wishlist method
-  AddWishlist(wishlst:Wishlist){
-    console.log(wishlst)
-    return  this.http.post<any>('http://localhost:8080/wishlist/addWishlist',wishlst)
-  }
-
-
-  //list wishlist method
-  getAllWishlist():Observable<any>{
-    return this.http.get('http://localhost:8080/wishlist/listWishlist')
-   }
-
+wishlistProducs(prductId,productName,productPrice,productImg):Observable<any>{
+  console.log(prductId)
+  return this.http.get('http://localhost:8080/wishlist/addWishlist/'+prductId+'/'+productName+'/'+productPrice+'?img='+productImg)
 }
+
+//wish list product details
+wishlistProductsDetails():Observable<any>{
+  return this.http.get('http://localhost:8080/wishlist/wishlistDetails')
+}
+
+
+//clear all wishlist
+clearWishlist():Observable<any>{
+  return this.http.get<any>('http://localhost:8080/wishlist/clearWishlist')
+  
+}
+}
+
