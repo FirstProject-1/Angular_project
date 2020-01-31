@@ -10,7 +10,7 @@ export class AppComponent implements OnInit {
   title = 'AngularApp';
 
   public productsInCart=[]
-  public cartInfo={};
+  public cartInfo=[];
   constructor(private cartService:CartServiceService){}
 
   ngOnInit() {

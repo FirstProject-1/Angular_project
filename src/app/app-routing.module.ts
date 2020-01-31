@@ -27,7 +27,9 @@ const routes: Routes = [
   {path:"manageCategory",component:CategoryManagmentComponent,canActivate:[AuthAdminGuard]},
   {path:"manageProduct",component:AdminAreaComponent,canActivate:[AuthAdminGuard]},
   { path:"productDetails/:id",component:ProductDetailsComponent},
-  {path:"**",component:NoPageFoundComponent}
+  {path:"each/:id",component:EachCategoryComponent},
+  {path:"**",component:NoPageFoundComponent},
+  
   
 ];
 
