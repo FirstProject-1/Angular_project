@@ -53,7 +53,7 @@ router.get('/listProudct',function(req,resp){
 //Details product by _Id
 router.get('/productDetails/:_id',function(req,resp){
     var _id=req.params._id
-    mongoose.model('products').findOne({_id:_id},function(err,data){
+    mongoose.model('products').findOne({_id:req.params._id},function(err,data){
         resp.json(data)
     })
 })

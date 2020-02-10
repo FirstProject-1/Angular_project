@@ -6,6 +6,6 @@ export class Product {
       public brand:string,
       public maker:String,
       public img:String,
-      public category:String,
+      public category:String
     ){}
 }

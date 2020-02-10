@@ -35,14 +35,14 @@ export class AllProductsComponent implements OnInit {
       error => console.log('error',error)
       )
   }
-
+/* 
   public productDetails(_id){
     console.log(_id)
     this.prodServe.productDetails(_id).subscribe(
       response => console.log('Done', response),
       error => console.log('error',error)
     )
-  }
+  } */
   OnSelect(product){
     this.route.navigate(["/productDetails",product._id]);
   }

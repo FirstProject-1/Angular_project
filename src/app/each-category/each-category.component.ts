@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../services/category/category.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { categForm } from '../classes/catForm';
-import { Product } from 'servises/product';
 import { CartServiceService } from '../services/cart/cart-service.service';
 
 @Component({

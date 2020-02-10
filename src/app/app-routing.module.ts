@@ -22,6 +22,8 @@ const routes: Routes = [
   {path:"login",component:LoginComponent},
   {path:"signup",component:SignupComponent},
   {path:"addCart",component:CartPageComponent},
+  {path:'each/:id',component:EachCategoryComponent}
+  ,
   {path:"payment",component:PaymentComponent,canActivate:[AuthGuard]},
   {path:"wishList",component:WishListPageComponent },
   {path:"manageCategory",component:CategoryManagmentComponent,canActivate:[AuthAdminGuard]},

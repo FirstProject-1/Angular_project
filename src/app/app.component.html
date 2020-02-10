@@ -8,8 +8,8 @@
   
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link"  routerLink="/home" routerLinkActive="active" class="nav-link" >Home</a>
+        <li class="nav-item">
+          <a class="nav-link"  routerLink="/home" class="nav-link" >Home</a>
         </li>
        <!-- Admin manger -->
         <li class="nav-item dropdown">
@@ -31,14 +31,14 @@
       </ul>
      
       <ul class="navbar-nav my-2 my-lg-0">
-        <li class="nav-item active">
-          <a class="nav-link"  routerLink="/addCart" routerLinkActive="active" class="nav-link" ><i class="material-icons">shopping_cart</i></a>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/addCart" routerLinkActive="active" class="nav-link"><i class="material-icons">shopping_cart</i></a>
         </li>
-        <li class="nav-item active">{{cartInfo.totalQuantity}}</li>
-        <li class="nav-item active">
-            <a class="nav-link"  routerLink="/wishList" routerLinkActive="active" class="nav-link" ><i class="material-icons">favorite_border</i></a>
+        <li class="ml-n2 mt-2 deep-purple lighten-1 btn-small btn-floating">{{cartInfo.totalQuantity}}</li>
+        <li class="nav-item ">
+            <a class="nav-link"  routerLink="/wishList" routerLinkActive="active" class="nav-link" ><h1><i class="material-icons"> favorite_border</i></h1></a>
           </li>
-          <li class="nav-item active">9</li>
+          <!-- <li class="mt-2 ml-n3 btn-floating deep-purple lighten-1 btn-small">9</li> -->
       </ul>
     </div>
 </nav>
