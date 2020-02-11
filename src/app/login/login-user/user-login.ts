@@ -4,3 +4,7 @@ export class UserLogin {
         public password:string,
     ){}
 }
+
+export class Errors {
+    msg : string 
+}

@@ -7,3 +7,8 @@ export class Signup {
         
     ){}
 }
+export class Errors {
+    msg : string 
+   
+
+}

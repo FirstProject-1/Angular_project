@@ -7,49 +7,8 @@ var jwt = require('jsonwebtoken')
   
 
  var middlewareBodyParser= bodyParser.json()
+ 
 
- /* route.post("/signup",middlewareBodyParser,function(req,resp){
-  var adminModel=mongoose.model("admin")
-    var new_admin=new adminModel()
-    new_admin.email=req.body.txtmail;
-    new_admin.password=req.body.password;
-    new_admin.save(function(err,data){
-    if(!err){
-         console.log("saved...");
-          resp.json(data)
-      }else console.log(err)
-    })
-}) */
-/* 
- route.post("/login",middlewareBodyParser,function(req,resp){
-
-    // var adminModel=mongoose.model("admin")
-    // var new_admin=new adminModel()
-    // new_admin.email=req.body.txtmail;
-    // new_admin.password=req.body.password;
-    mongoose.model("admin").find({
-      email:req.body.txtmail,
-      password:req.body.password
-    },(function(err,data){
-      
-      if(data.length === 0){
-        resp.json("sorry you are not allowed")
-      }
-      else{
-        const payload= { subject: req.body._id}
-        const tokenAuthAdmin = jwt.sign(payload,"this is secret key")
-          if (tokenAuthAdmin === undefined)
-          {console.log("not an admin");
-          }
-          else{
-            resp.send({tokenAuthAdmin})
-          }
-       
-      }
-    }))
-        
-               
-}) */
 
 route.post("/login",middlewareBodyParser,function(req,resp){
 

@@ -3,30 +3,32 @@ var route = express.Router()
 var app = express()
 var bodyParser = require("body-parser")
 var mongoose = require("mongoose")
+var jwt = require('jsonwebtoken')
+const bcrypt = require('bcryptjs');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 var middlewareBodyParser = bodyParser.json();
 
 
 
-function verifyToken(req,resp,next){
-    if(!req.headers.authorization){
-      return resp.status(401).send("req unauthor..")
-    }
-    let token= req.headers.authorization.split(' ')[1]
-    if (token==='null'){
-      return resp.status(401).send('req unauthor..')
-    }
-    let payload=jwt.verify(token,'secret key')
-    if (!payload){
-      return resp.status(401).send('req unauthor..')
-    }
-    req.userId= payload.subject
-    next()
+var Token = ''
+function verifytoken(req,res,next){
+  // console.log(req.query.userToken);
+let userToken=req.query.userToken
+jwt.verify(userToken,'Shhhh',(err , verifytoken)=>
+{if (err)
+  return res.status(400).json({Msg : 'you are unauthorized'})
+  if (verifytoken)
+    {
+      Token = verifytoken;
+    next();}
   }
+)}
 // create cart and add products to it
-route.get("/add/:id/:price/:name",function(req,resp,next){
+route.get("/add/:id/:price/:name",verifytoken,function(req,resp,next){
     // console.log(req.headers);
+    cartId=Token.userId
+    console.log(Token);
     
     productId=req.params.id
     productPrice=parseInt(req.params.price);
@@ -39,13 +41,14 @@ route.get("/add/:id/:price/:name",function(req,resp,next){
         _id:productId,
         img:req.query.img
     }
-    mongoose.model('cart').findOne((err,cart)=>{
+    mongoose.model('cart').findOne({user:cartId},(err,cart)=>{
         if (!cart){
             var cartModel = mongoose.model("cart")
             var cart = new cartModel()
             cart.products=[productAddedToCart]
             cart.totalPrice=productPrice
             cart.totalQuantity=1;
+            cart.user=cartId
             cart.save(function(err,data){
             resp.send(data);
             console.log(data);
@@ -67,7 +70,7 @@ route.get("/add/:id/:price/:name",function(req,resp,next){
                 cart.products[indexOfProduct].price+=productPrice;
                 cart.totalQuantity+=1;
                 cart.totalPrice+=productPrice
-                mongoose.model('cart').updateOne({_id:cart._id},{$set: cart},(err,data)=>{
+                mongoose.model('cart').updateOne({user:cartId},{$set: cart},(err,data)=>{
                     if(err){console.log(err)}
                         console.log(data)
                         console.log(cart)
@@ -79,7 +82,7 @@ route.get("/add/:id/:price/:name",function(req,resp,next){
                 cart.totalQuantity=cart.totalQuantity +1;
                 cart.totalPrice= cart.totalPrice + productPrice
                 cart.products.push(productAddedToCart)
-                mongoose.model('cart').updateOne({_id:cart._id},{$set: cart},(err,data)=>{
+                mongoose.model('cart').updateOne({user:cartId},{$set: cart},(err,data)=>{
                     if(err){console.log(err)}
                         console.log(data)
                         console.log(cart)
@@ -107,7 +110,7 @@ route.get('/details', async function (req, resp) {
         
     }) */
     // show all products in first cart in carts collection
-     mongoose.model("cart").findOne(async function (err,data){
+     mongoose.model("cart").findOne({user:cartId},async function (err,data){
         try{
             await resp.send(data)
             console.log(data)
@@ -120,7 +123,7 @@ route.get('/details', async function (req, resp) {
 
 // delete specific product in cart
 route.get('/deleteItem/:id', function (req, resp) {
-    mongoose.model('cart').update({},{ $pull:{ products :{_id:req.params.id} } },()=>console.log("deleted"+req.params.id)
+    mongoose.model('cart').update({user:cartId},{ $pull:{ products :{_id:req.params.id} } },()=>console.log("deleted"+req.params.id)
     )
 
     resp.end()

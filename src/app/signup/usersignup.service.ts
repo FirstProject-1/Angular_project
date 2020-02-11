@@ -8,9 +8,10 @@ import { Signup } from './signup';
 })
 export class UsersignupService {
 
+
   constructor( private http:HttpClient) { }
-
-
+public registered = false
+public authorized=false
 
 
 public addUser(sign:Signup){

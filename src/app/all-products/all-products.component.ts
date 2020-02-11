@@ -18,7 +18,7 @@ export class AllProductsComponent implements OnInit {
     this.prodServe.getAllProduct().subscribe(data=>{this.productModel=data;})
   }
 
-  //add to cart
+  //add to cart from homepage
   public addToCart(product_id,product_price,product_name,product_img){
     console.log(product_id)
     this.cartService.cartProducting(product_id,product_price,product_name,product_img).subscribe(
@@ -27,7 +27,7 @@ export class AllProductsComponent implements OnInit {
       )
   }
   
-  //add wishlist
+  //add wishlist from homepage
   public addWishlist(product_id,product_name,product_price,product_img){
     console.log(product_id)
     this.wishlistServe.wishlistProducs(product_id,product_name,product_price,product_img).subscribe(
@@ -35,14 +35,6 @@ export class AllProductsComponent implements OnInit {
       error => console.log('error',error)
       )
   }
-/* 
-  public productDetails(_id){
-    console.log(_id)
-    this.prodServe.productDetails(_id).subscribe(
-      response => console.log('Done', response),
-      error => console.log('error',error)
-    )
-  } */
   OnSelect(product){
     this.route.navigate(["/productDetails",product._id]);
   }

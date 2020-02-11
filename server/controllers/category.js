@@ -26,7 +26,6 @@ route.post("/add", middlewareBodyParser, function (req, resp,next) {
 
 route.get('/list',function(req,resp){
     mongoose.model('category').find(function(err,data){
-        console.log(data)
         resp.send(data);
     })
 })

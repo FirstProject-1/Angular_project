@@ -2,6 +2,7 @@
 <div class="container-fluid">
     <div class="form">
       <form #userForm="ngForm" method="POST" novalidate (ngSubmit)="onSubmit()">
+        <div *ngIf='isRegistered' class="row text-primary">{{Div}}</div>
         <div class="row">
             <div class="input-field col s12">
               <input  type="email" class="validate" class="form-control" [class.is-invalid]="email.invalid && email.touched" #email="ngModel"
@@ -16,8 +17,9 @@
               <label for="password">Password</label>
             </div>
           </div>
+          <div *ngIf='isErr' class="row text-danger">{{Div}}</div>
           <div class="row">
-            <button class="btn waves-effect waves-light amber lighten-3" type="submit" name="action"  type="submit" [disabled]="userForm.form.invalid || topicHasErr" value="Submit Form">Submit
+            <button class="btn waves-effect waves-light amber lighten-3" type="submit" name="action"  type="submit" [disabled]="userForm.form.invalid" value="Submit Form">Submit
                 <i class="material-icons right">send</i>
             </button>
           </div>

@@ -12,7 +12,7 @@
           <a class="nav-link"  routerLink="/home" class="nav-link" >Home</a>
         </li>
        <!-- Admin manger -->
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" *ngIf='isAdminAuth'>
           <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
           <div class="dropdown-menu" aria-labelledby="dropdown01">
             <a class="dropdown-item" routerLink="/manageProduct" routerLinkActive="active" >My product</a>
@@ -29,16 +29,27 @@
             </div>
           </li>
       </ul>
-     
-      <ul class="navbar-nav my-2 my-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/addCart" routerLinkActive="active" class="nav-link"><i class="material-icons">shopping_cart</i></a>
-        </li>
-        <li class="ml-n2 mt-2 deep-purple lighten-1 btn-small btn-floating">{{cartInfo.totalQuantity}}</li>
-        <li class="nav-item ">
-            <a class="nav-link"  routerLink="/wishList" routerLinkActive="active" class="nav-link" ><h1><i class="material-icons"> favorite_border</i></h1></a>
+      <!-- <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" style="width: 215px;">
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+      </form> -->
+      <ul class="navbar-nav">
+          <!-- user manger -->
+          <li class="nav-item dropdown" *ngIf='isUserAuth'>
+            <a class="nav-link mt-4 dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hi {{userName}}</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item mb-3" (click)='logout()'>logout</a>
+            </div>
           </li>
-          <!-- <li class="mt-2 ml-n3 btn-floating deep-purple lighten-1 btn-small">9</li> -->
+        <li class="nav-item">
+          <a class="nav-link mt-5" routerLink="/addCart"><i class="material-icons">shopping_cart</i></a>
+        </li>
+        <li class="nav-item" *ngIf='cartInfo.totalQuantity>0'>
+          <a class="nav-link ml-n2 deep-purple lighten-1 btn-small btn-floating" style="margin-top: 60px;">{{cartInfo.totalQuantity}}</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link mb-3" routerLink="/wishList"><h1><i class="material-icons"> favorite_border</i></h1></a>
+          </li>
       </ul>
     </div>
 </nav>

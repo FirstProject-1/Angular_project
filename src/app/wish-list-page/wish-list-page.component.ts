@@ -23,6 +23,7 @@ export class WishListPageComponent implements OnInit {
   // clear all wishlist
   clearAllOfThewishlist(){
     this.wishlistServ.clearWishlist().subscribe(data=>console.log("you've cleared your cart"))
+    alert("clear Done..")
   }
  
   // add cart form wishist
@@ -32,6 +33,7 @@ export class WishListPageComponent implements OnInit {
       response => console.log('add to cart', response),
       error => console.log('error',error)
       )
+      alert("proudct sent")
   }
 
   // on init

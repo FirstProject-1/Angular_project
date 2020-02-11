@@ -9,6 +9,9 @@ import { UsersignupService } from './usersignup.service';
 })
 export class SignupComponent implements OnInit {
   topicHasErr=false;
+  Div: string;
+  err: number=0
+  
   constructor( private user:UsersignupService) { }
   public userModel=new Signup('','','','')
   ValidateTopic(topicValue)
@@ -29,9 +32,14 @@ export class SignupComponent implements OnInit {
   onSubmit(){
     console.log(this.userModel)
     this.user.addUser(this.userModel).subscribe(
-      response =>{localStorage.setItem('token',response['tokenAuth'])}
+      response =>{/* localStorage.setItem('token',response['tokenAuth']) */
+      this.user.registered=true
+      console.log(response)
+    }
       ,
-      error => console.log('error',error)
+      error => {console.log(error.error.Msg);
+      this.err=1
+      this.Div = error.error.Msg as string;}
       )
 
   }

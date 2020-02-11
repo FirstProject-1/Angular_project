@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartServiceService } from './services/cart/cart-service.service';
+import { AdminService } from './login/login-admin/admin.service';
+import { UserloginService } from './login/login-user/userlogin.service';
 
 @Component({
   selector: 'app-root',
@@ -11,9 +13,27 @@ export class AppComponent implements OnInit {
 
   public productsInCart=[]
   public cartInfo=[];
-  constructor(private cartService:CartServiceService){}
+  public isAdminAuth;
+  isUserAuth: any;
+  userName: string;
 
+  constructor(private cartService:CartServiceService, private adminService:AdminService,private UserLoginService:UserloginService){
+    this.UserLoginService.GetUser().subscribe(res=>{
+      this.userName= res as string;
+      console.log(this.userName);
+    }
+      
+ )
+  }
+
+  logout()
+  {
+    localStorage.removeItem("userToken")
+    // this.route.navigate(['/login'])
+     
+  }
   ngOnInit() {
+
     this.cartService.cartProductsDetails().subscribe(data=>{
       if(data.products.length!=="null"){
         this.cartInfo=data;
@@ -21,8 +41,12 @@ export class AppComponent implements OnInit {
       } else{
         this.productsInCart=["there is no products here yet"]
       }
-      
-      
     });
+    this.isAdminAuth= this.adminService.authAmin()
+   
+    this.isUserAuth= this.UserLoginService.auth()
+    console.log(this.isUserAuth);
+
+    
   }
 }
