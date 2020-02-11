@@ -98,7 +98,7 @@ route.get("/add/:id/:price/:name",verifytoken,function(req,resp,next){
 
 
 //////// show all products in cart
-route.get('/details', async function (req, resp) {
+route.get('/details',verifytoken, function (req, resp) {
     // show all products in last cart in cats collection
     /* mongoose.model("cart").find().limit(1).sort({$natural:-1}).populate('products').exec(async function (err,data){
         try{ 
@@ -110,11 +110,15 @@ route.get('/details', async function (req, resp) {
         
     }) */
     // show all products in first cart in carts collection
-     mongoose.model("cart").findOne({user:cartId},async function (err,data){
-        try{
-            await resp.send(data)
+    cartId=Token.userId
+    
+
+     mongoose.model("cart").findOne({user : cartId}, function (err,data){
+        if (!err){
+            console.log(Token.userId);
+             resp.send(data)
             console.log(data)
-        }catch(err){
+        }else{
             console.log(err)
         }
     })
@@ -122,16 +126,17 @@ route.get('/details', async function (req, resp) {
 })
 
 // delete specific product in cart
-route.get('/deleteItem/:id', function (req, resp) {
+route.get('/deleteItem/:id',verifytoken, function (req, resp) {
+    cartId=Token.userId
     mongoose.model('cart').update({user:cartId},{ $pull:{ products :{_id:req.params.id} } },()=>console.log("deleted"+req.params.id)
     )
 
     resp.end()
 })
 
-route.get('/clear',function(req, resp){
-
-    mongoose.model("cart").deleteMany((err,data)=>console.log(data))
+route.get('/clear',verifytoken,function(req, resp){
+    cartId=Token.userId
+    mongoose.model("cart").deleteOne({user:cartId},(err,data)=>console.log(data))
     resp.end()
         
 })
