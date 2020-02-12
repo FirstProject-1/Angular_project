@@ -63,11 +63,6 @@ route.post("/signup",middlewareBodyParser,function(req,resp){
 })
 
 route.post("/login",middlewareBodyParser,function(req,resp){
-/* 
-  var userModel=mongoose.model("user")
-  var _user=new userModel()
-  _user.email=req.body.txtmail;
-  _user.password=req.body.password; */
 
     mongoose.model("user").findOne({email:req.body.txtmail},(err,data)=>{
       if(err){console.log(err);
@@ -107,13 +102,18 @@ route.post("/login",middlewareBodyParser,function(req,resp){
 })
 
 route.get('/userName',verifytoken ,(req,res,next)=>{
-  // console.log(Token);
+  console.log(req.query.userToken);
+  if(req.query.userToken != null){
   return res.status(200).json(Token.username)
+  }
+  else{
+    res.status(200).json('no user login')
+  }
 })
 
 var Token = ''
 function verifytoken(req,res,next){
-  // console.log(req.query.userToken);
+  console.log(req.query.userToken);
 let userToken=req.query.userToken
 jwt.verify(userToken,'Shhhh',(err , verifytoken)=>
 {if (err)

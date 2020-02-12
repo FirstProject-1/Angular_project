@@ -24,9 +24,6 @@ export class CartServiceService {
       params : new HttpParams().append('userToken',localStorage.getItem('userToken'))})
   }
   
-  /* cartDetails():Observable<any>{
-    return this.http.get('http://localhost:8080/cart/detailsCart')
-  } */
   clearCart():Observable<any>{
     return this.http.get<any>('http://localhost:8080/cart/clear',{
       observe :'body',   

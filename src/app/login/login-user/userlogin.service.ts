@@ -14,16 +14,18 @@ export class UserloginService {
   //  console.log(log)
     return this.http.post('http://localhost:8080/user/login',log);
   }
+  public auth(){
+    return !!localStorage.getItem('userToken')
+  }
+
 public GetUser ()
 {
  return this.http.get('http://localhost:8080/user/userName',{
  observe :'body',   
  params : new HttpParams().append('userToken',localStorage.getItem('userToken'))});
+ 
 }
-  auth(){
-    return !!localStorage.getItem('userToken')
-  }
-
+  
   getToken(){
     return localStorage.getItem('userToken')
   }

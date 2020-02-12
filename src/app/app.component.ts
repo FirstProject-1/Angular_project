@@ -15,35 +15,36 @@ export class AppComponent implements OnInit {
   public cartInfo=[];
   public isAdminAuth;
   isUserAuth: any;
-  userName: string;
+  userName: String;
 
   constructor(private cartService:CartServiceService, private adminService:AdminService,private UserLoginService:UserloginService){
-    this.UserLoginService.GetUser().subscribe(res=>{
-      this.userName= res as string;
-      console.log(this.userName);
-    }
-      
- )
+    if(this.UserLoginService.auth()){
+          console.log(this.UserLoginService.auth())
+        this.UserLoginService.GetUser().subscribe(res=>{
+            this.userName= res as string
+        }  
+      )
+      this.cartService.cartProductsDetails().subscribe(data=>{
+        if(data!=null){
+          this.cartInfo=data;
+          // console.log(data)
+        } else{
+          this.productsInCart=["there is no products here yet"]
+        }
+      });
   }
+}
 
   logout()
   {
     localStorage.removeItem("userToken")
-    // this.route.navigate(['/login'])
      
   }
   ngOnInit() {
 
-    this.cartService.cartProductsDetails().subscribe(data=>{
-      if(data.products.length!=="null"){
-        this.cartInfo=data;
-        console.log(data)
-      } else{
-        this.productsInCart=["there is no products here yet"]
-      }
-    });
+    
+    // if(this.UserLoginService.auth()){
     this.isAdminAuth= this.adminService.authAmin()
-   
     this.isUserAuth= this.UserLoginService.auth()
     console.log(this.isUserAuth);
 

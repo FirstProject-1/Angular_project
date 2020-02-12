@@ -21,8 +21,11 @@ jwt.verify(userToken,'Shhhh',(err , verifytoken)=>
   if (verifytoken)
     {
       Token = verifytoken;
-    next();}
+    next();
+    
+    }
   }
+  
 )}
 // create cart and add products to it
 route.get("/add/:id/:price/:name",verifytoken,function(req,resp,next){
@@ -110,18 +113,20 @@ route.get('/details',verifytoken, function (req, resp) {
         
     }) */
     // show all products in first cart in carts collection
-    cartId=Token.userId
-    
-
+    if(req.query.userToken != null){
+        cartId=Token.userId
      mongoose.model("cart").findOne({user : cartId}, function (err,data){
         if (!err){
             console.log(Token.userId);
-             resp.send(data)
+             resp.status(200).send(data)
             console.log(data)
         }else{
             console.log(err)
         }
     })
+} else {
+    res.status(200).json('no user login')
+}
       
 })
 

@@ -19,8 +19,10 @@
             <div class="col-sm-1"><h5>Price</h5></div>
           </div>
         </div>
+          <div class="list-group-item  list-group-item-info mb-4" *ngIf='productsInCart.length===0'>{{noProducts}}</div>
             <div  class="list-group-item  list-group-item-info mb-4" *ngFor="let product of productsInCart">
               <div class="row">
+                
                 <div class="col-sm-3"><img src="{{product.img}}" class="col"></div>
                 <div class="col-sm-4"><h5>{{product.name}}</h5></div>
                 <div class="col-sm-1"><h5>{{product.quantity}}</h5></div>

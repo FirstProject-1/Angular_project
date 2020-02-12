@@ -38,7 +38,6 @@ export class LoginUserComponent implements OnInit {
     this.log.logUser(this.userModel).subscribe(
       res=>
       {
-        this.isErr = true;
          console.log(res)
         localStorage.setItem('userToken',res as string)
         this.route.navigate(['/home'])
